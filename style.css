@@ -412,7 +412,7 @@ html {
 /* === Modal para imagem em destaque === */
 
 #imageModal {
-  display: none; /* escondido inicialmente */
+  display: none;
   position: fixed;
   z-index: 3000;
   left: 0;
@@ -421,6 +421,12 @@ html {
   height: 100%;
   overflow: auto;
   background-color: rgba(0,0,0,0.9);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#imageModal.show {
+  opacity: 1;
 }
 
 #imageModal img {
