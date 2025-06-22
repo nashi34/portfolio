@@ -327,6 +327,22 @@ html {
   color: white !important;
 }
 
+/* Zoom toggle na imagem */
+.gallery-item img.zoomed {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+  z-index: 10;
+  position: relative;
+}
+
+/* Esconde o overlay quando a imagem estiver com zoom */
+.gallery-item img.zoomed + .overlay {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s ease;
+}
+
+
 /* Lightbox/Modal */
 .modal {
   display: none;

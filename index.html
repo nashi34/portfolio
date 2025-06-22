@@ -442,6 +442,41 @@ video.addEventListener('touchend', () => {
     });
   });
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Função para checar se é mobile (podes ajustar o breakpoint)
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
+
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      img.addEventListener('click', (e) => {
+        if (!isMobile()) return; // só ativa no mobile
+
+        e.preventDefault();
+
+        const overlay = img.parentElement.querySelector('.overlay');
+
+        if (img.classList.contains('zoomed')) {
+          // Se já está com zoom, tira o zoom e mostra o overlay
+          img.classList.remove('zoomed');
+          if (overlay) {
+            overlay.style.opacity = '1';
+            overlay.style.pointerEvents = 'auto';
+          }
+        } else {
+          // Aplica zoom e esconde o overlay
+          img.classList.add('zoomed');
+          if (overlay) {
+            overlay.style.opacity = '0';
+            overlay.style.pointerEvents = 'none';
+          }
+        }
+      });
+    });
+  });
+</script>
+
 
 </body>
 </html>
