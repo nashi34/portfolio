@@ -182,13 +182,18 @@
   position: relative;
 }
 
-/* No mobile: overlay começa desativado para não bloquear clique */
+/* No mobile: overlay normalmente desativado */
 @media (max-width: 768px) {
   .gallery-item .overlay {
     pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Ativo apenas quando imagem não está com zoom */
+  .gallery-item img:not(.zoomed) + .overlay {
+    pointer-events: auto;
   }
 }
-
   </style>
   <link rel="icon" href="icon.png" type="image/png" />
 </head>
@@ -459,28 +464,28 @@ video.addEventListener('touchend', () => {
 </script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Função para checar se é mobile (podes ajustar o breakpoint)
     function isMobile() {
       return window.innerWidth <= 768;
     }
 
     document.querySelectorAll('.gallery-item img').forEach(img => {
       img.addEventListener('click', (e) => {
-        if (!isMobile()) return; // só ativa no mobile
+        if (!isMobile()) return;
 
         e.preventDefault();
 
-        const overlay = img.parentElement.querySelector('.overlay');
+        const container = img.closest('.gallery-item');
+        const overlay = container.querySelector('.overlay');
 
-        if (img.classList.contains('zoomed')) {
-          // Se já está com zoom, tira o zoom e mostra o overlay
+        const isZoomed = img.classList.contains('zoomed');
+
+        if (isZoomed) {
           img.classList.remove('zoomed');
           if (overlay) {
             overlay.style.opacity = '1';
             overlay.style.pointerEvents = 'auto';
           }
         } else {
-          // Aplica zoom e esconde o overlay
           img.classList.add('zoomed');
           if (overlay) {
             overlay.style.opacity = '0';
