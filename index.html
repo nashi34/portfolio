@@ -444,27 +444,59 @@
       });
     });
 
-    // Controle dos vídeos da galeria
-    const videos = document.querySelectorAll('.gallery-video');
-    videos.forEach(video => {
-      video.volume = 0.05;
+// Controle dos vídeos da galeria
+const videos = document.querySelectorAll('.gallery-video');
+videos.forEach(video => {
+  video.volume = 0.05;
+  const container = video.closest('.gallery-item');
+  const overlay = container.querySelector('.overlay');
 
-      // Pausa outros vídeos quando um começa a tocar
-      video.addEventListener('play', () => {
-        videos.forEach(v => {
-          if (v !== video && !v.paused) v.pause();
-        });
+  // Funções para mostrar/esconder overlay
+  const hideOverlay = () => {
+    overlay.style.opacity = '0';
+    overlay.style.pointerEvents = 'none';
+  };
+  
+  const showOverlay = () => {
+    overlay.style.opacity = '1';
+    overlay.style.pointerEvents = 'auto';
+  };
+
+  // Eventos do vídeo
+  video.addEventListener('play', hideOverlay);
+  video.addEventListener('pause', showOverlay);
+  video.addEventListener('ended', showOverlay);
+
+  // Comportamento específico para mobile
+  if (window.innerWidth <= 768) {
+    // Touch para mobile - overlay some quando toca no vídeo
+    video.addEventListener('touchstart', () => {
+      if (!video.paused) hideOverlay();
+    });
+    
+    // Pausa outros vídeos quando um começa
+    video.addEventListener('play', () => {
+      videos.forEach(v => {
+        if (v !== video && !v.paused) {
+          v.pause();
+          const otherOverlay = v.closest('.gallery-item').querySelector('.overlay');
+          otherOverlay.style.opacity = '1';
+          otherOverlay.style.pointerEvents = 'auto';
+        }
       });
+    });
+  }
 
-      // Pausa vídeo se não estiver visível
-      const vidObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting && !video.paused) {
-            video.pause();
-          }
-        });
-      }, { threshold: 0.1 });
-      vidObserver.observe(video);
+  // Pausa vídeo se sair da viewport
+  const vidObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting && !video.paused) {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.1 });
+  vidObserver.observe(video);
+});
 
       const container = video.closest('.gallery-item');
       const overlay = container.querySelector('.overlay');
@@ -518,7 +550,27 @@
         }
       });
     });
+  // Controle do menu mobile
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+const navbar = document.querySelector('.navbar');
+
+const toggleMenu = () => {
+  navLinks.classList.toggle('active');
+  navbar.classList.toggle('active');
+  menuToggle.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+};
+
+menuToggle.addEventListener('click', toggleMenu);
+
+// Fechar menu ao clicar em um link
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      toggleMenu();
+    }
   });
+});
 </script>
 </body>
 </html>
