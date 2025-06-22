@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio | David Lopes</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Estilos de animação */
+    .fade-in {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    
+    /* Seções inicialmente invisíveis */
+    .projects, .about, .contact {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    
+    /* Estilos para a galeria */
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 1rem;
+    }
+    
+    .gallery-item {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    
+    /* Container especial para o vídeo vertical */
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 177.78%; /* Proporção 9:16 para vídeo vertical */
+      background-color: #1e1e1e;
+    }
+    
+    /* Estilo ajustado para o vídeo vertical */
+    .gallery-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      color: white;
+      padding: 2rem 1.5rem 1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .gallery-item:hover .overlay {
+      opacity: 1;
+    }
+    
+    .overlay h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    
+    .overlay p {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .tags span {
+      background-color: #0099ff;
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    
+    @media (max-width: 768px) {
+      .gallery-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .overlay {
+        opacity: 1;
+        padding: 1rem;
+      }
+      
+      .video-container {
+        padding-top: 177.78%; /* Mantém a proporção em mobile */
+      }
+    }
+    /* Esconde o menu-toggle no desktop */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--secondary-color, #0099ff); /* Usa a cor que você quiser */
+  border-radius: 2px;
+}
+
+/* Navbar e nav-links */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+@media (max-width: 768px) {
+  /* Mostrar o menu-toggle */
+  .menu-toggle {
+    display: flex;
+  }
+  
+  /* Esconde o menu padrão */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: var(--primary-color, #222);
+    position: absolute;
+    top: 60px; /* ajuste conforme altura da navbar */
+    right: 0;
+    width: 100%;
+    padding: 1rem 0;
+    margin: 0;
+    border-top: 1px solid #444;
+  }
+  
+  /* Mostrar o menu quando ativo */
+  .nav-links.active {
+    display: flex;
+  }
+  
+  /* Ajustar links */
+  .nav-links li {
+    margin: 0.5rem 0;
+    text-align: center;
+  }
+  
+  .nav-links li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+  }
+}
+  </style>
+  <link rel="icon" href="icon.png" type="image/png" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">O meu portfólio</div>
+      <div class="menu-toggle" aria-label="Menu de navegação" role="button" tabindex="0">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+      <ul class="nav-links">
+        <li><a href="#home">Início</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#contacto">Contactos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Sobre Mim</h1>
+      <p>Chamo-me David Lopes, sou estudante de Engenharia de Multimédia no ISTEC, com forte interesse em Front-End Development, UI Design e Web Design.</p>
+        <p>Procuro crescer profissionalmente em projetos criativos e tecnológicos que combinem design, funcionalidade e experiência do utilizador.</p>
+          <p><b>Skills:</b> Adobe Creative Cloud, Web Design, UI/UX </p>
+    </div>
+  </section>
+
+<!-- ... (cabeçalho igual) -->
+
+<section id="projetos" class="projects">
+  <h2>Os meus projetos</h2>
+  <div class="gallery-container">
+
+    <!-- Projeto Final -->
+    <div class="gallery-item">
+      <div class="video-container">
+        <video class="gallery-video" controls>
+          <source src="Final_Render_1.mp4" type="video/mp4">
+          O teu navegador não suporta vídeos HTML5.
+        </video>
+        <div class="overlay">
+          <h3>Onboarding do Projeto Final</h3>
+          <p>Vídeo demonstrativo do meu projeto de conclusão</p>
+          <div class="tags">
+            <span>Multimédia</span>
+            <span>UI/UX</span>
+            <span>Vídeo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Imagem: Banner -->
+<div class="gallery-item">
+  <div class="image-container">
+    <img src="ad_logo.png" alt="Banner TW">
+    <div class="overlay">
+      <h3>Banner Promocional TW</h3>
+      <p>Design gráfico com tipografia criativa para promoção digital.</p>
+      <div class="tags">
+        <span>Photoshop</span>
+        <span>Design</span>
+        <span>Identidade Visual</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Vídeo: Logo com som (vertical fix) -->
+<div class="gallery-item">
+  <div class="video-container">
+    <video class="gallery-video" controls>
+      <source src="logo_com_som_final.mp4" type="video/mp4">
+      O teu navegador não suporta vídeos HTML5.
+    </video>
+    <div class="overlay">
+      <h3>Logo Animado TW</h3>
+      <p>Animação do logótipo com som, usada em apresentações da equipa.</p>
+      <div class="tags">
+        <span>After Effects</span>
+        <span>Áudio</span>
+        <span>Branding</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Imagem: Cubo Rubik -->
+    <div class="gallery-item">
+      <div class="image-container">
+        <img src="cubo_rubik.jpg" alt="Cubo Rubik 3D">
+        <div class="overlay">
+          <h3>Cubo Rubik 3D</h3>
+          <p>Render 3D com iluminação e materiais realistas.</p>
+          <div class="tags">
+            <span>3D</span>
+            <span>Render</span>
+            <span>Blender</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vídeo: Ad Mobile Projeto -->
+    <div class="gallery-item">
+      <div class="video-container">
+        <video class="gallery-video" controls>
+          <source src="ad_mobile_projeto.mp4" type="video/mp4">
+          O teu navegador não suporta vídeos HTML5.
+        </video>
+        <div class="overlay">
+          <h3>Projeto Mobile Ad</h3>
+          <p>Vídeo vertical publicitário para redes sociais.</p>
+          <div class="tags">
+            <span>Vídeo</span>
+            <span>Mobile</span>
+            <span>Promo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+  <section id="contacto" class="contact">
+    <h2>Contactos</h2>
+    <p><b>Email:</b> <a href="mailto:davidjplopes@gmail.com">davidjplopes@gmail.com</a></p>
+    <p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/david-lopes-774a16228/" target="_blank">link do meu perfil</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 David Lopes. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Configuração do Intersection Observer
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+          }
+        });
+      }, observerOptions);
+
+      // Elementos a serem observados
+      const sections = document.querySelectorAll('.projects, .about, .contact, .gallery-item');
+      sections.forEach(function(section) {
+        observer.observe(section);
+      });
+
+      // Efeito de scroll na navbar
+      window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 10) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+
+      // Controle de vídeos na galeria
+      const videos = document.querySelectorAll('.gallery-video');
+      videos.forEach(function(video) {
+        // Pausa vídeos quando outro é reproduzido
+        video.addEventListener('play', function() {
+          videos.forEach(function(otherVideo) {
+            if (otherVideo !== video && !otherVideo.paused) {
+              otherVideo.pause();
+            }
+          });
+        });
+        
+        // Pausa vídeos quando não estão visíveis
+        const videoObserver = new IntersectionObserver(
+          function(entries) {
+            entries.forEach(function(entry) {
+              if (!entry.isIntersecting && !video.paused) {
+                video.pause();
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        videoObserver.observe(video);
+      });
+    });
+  </script>
+    <!-- teu resto do body aqui -->
+     <script src="script.js" defer></script>
+</body>
+</html>
+
+</body>
+</html>

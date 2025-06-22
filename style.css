@@ -1,0 +1,424 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap');
+
+:root {
+  --primary-color: #1e1e1e;
+  --secondary-color: #ffffff;
+  --accent-color: #ff0000;
+  --font: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  line-height: 1.6;
+  padding-top: 60px;
+}
+
+header {
+  background-color: var(--primary-color);
+  padding: 1rem 2rem;
+  color: var(--secondary-color);
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.95);
+  background-color: var(--primary-color);
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 600;
+  user-select: none;
+}
+
+/* Menu padrão desktop */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+/* Botão hambúrguer - mobile */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40px;   /* área maior para clique */
+  height: 30px;
+  cursor: pointer;
+  padding: 5px;
+  user-select: none;
+  z-index: 1100;
+  position: relative; /* para evitar problemas de posicionamento */
+}
+
+.menu-toggle span {
+  display: block;   /* garante que cada barra é um bloco */
+  width: 100%;      /* barra com largura total do botão */
+  height: 3px;
+  background: var(--secondary-color);
+  border-radius: 2px;
+  transition: 0.3s;
+  pointer-events: none; /* importante! para o clique passar*/
+}
+
+/* Hero */
+.hero {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #f5f5f5, #eaeaea);
+  font-family: 'Urbanist', sans-serif;
+  margin-top: 70px; /* para compensar navbar fixa */
+}
+
+.hero p {
+  font-size: 1.30rem;
+  font-weight: 400;
+  color: #000000; 
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.projects, .about, .contact {
+  padding: 4rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: 'Urbanist', sans-serif;
+}
+
+.projects h2, .about h2, .contact h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.about p, .contact p {
+  font-size: 1.30rem;
+  font-weight: 400;
+  color: #000000; 
+  text-align: left;
+}
+
+.contact p {
+  text-align: center;
+}
+
+.project-list {
+  display: grid;
+  gap: 2rem;
+}
+
+.project {
+  border: 1px solid #ddd;
+  padding: 1.5rem;
+  border-radius: 10px;
+  transition: box-shadow 0.3s ease;
+  background: #fff;
+}
+
+.project:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.project-placeholder {
+  height: 200px;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #555;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f4f4f4;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Galeria de Projetos */
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.projects {
+  background-color: #6e6b6b5b;
+}
+
+.gallery-item {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.image-container {
+  aspect-ratio: 16/9;
+  height: 100%; /* Garante altura consistente */
+  background-color: #726e6ebd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  margin: auto; /* Centraliza verticalmente */
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+  color: white;
+  padding: 2rem 1.5rem 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+
+.overlay h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.overlay p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tags span {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.tags span {
+  background-color: #ff0000 !important;
+  color: white !important;
+}
+
+/* Lightbox/Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  overflow: auto;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+  margin-top: 5vh;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Vídeo */
+.gallery-video {
+  background-color: #b9b3b3b7;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
+}
+
+.gallery-video.logo-video {
+  object-fit: cover;
+}
+
+/* Remove a seção de vídeo separada se quiser */
+.video-section {
+  display: none;
+}
+
+/* Responsividade */
+
+/* Desktop médio/grande */
+@media (min-width: 768px) {
+  .project-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop maior */
+@media (min-width: 1024px) {
+  .project-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Galeria 1 coluna */
+  .gallery-container {
+    grid-template-columns: 1fr;
+  }
+
+  .overlay {
+    opacity: 1;
+    padding: 1rem;
+  }
+
+  .projects, .about, .contact {
+    padding: 2rem 1rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  /* Esconde links e mostra botão hambúrguer */
+.nav-links {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40vw;
+  max-width: 200px;
+  height: 40vh;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1.5rem;
+
+  transform: translateX(100%) translateY(23px);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1050;
+}
+
+.nav-links.active {
+  transform: translateX(0) translateY(23px);
+}
+
+
+
+
+  /* Esconde nav-links no mobile por padrão */
+  .nav-links a {
+    font-size: 1.2rem;
+  }
+
+  /* Botão hambúrguer */
+  .menu-toggle {
+    display: flex;
+  }
+}
+/* Mobile: navbar está estática (default) */
+.navbar {
+  position: flex;
+}
+
+/* Desktop (a partir de 769px): navbar fixa no topo */
+@media (min-width: 769px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  body {
+    padding-top: 60px; /* Ajuste para altura da navbar fixa */
+  }
+}
+
+/* Para garantir que no mobile o padding-top no body não fique */
+@media (max-width: 768px) {
+  body {
+    padding-top: 0;
+  }
+}
+
