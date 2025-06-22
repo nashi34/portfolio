@@ -293,6 +293,18 @@ html {
   transition: opacity 0.3s ease;
 }
 
+/* Mobile: overlay sempre com pointer-events: none e visível por CSS */
+@media (max-width: 768px) {
+  .gallery-item .overlay {
+    pointer-events: none;
+  }
+
+  .gallery-item img.zoomed + .overlay {
+    opacity: 0 !important;
+  }
+}
+
+
 .gallery-item:hover .overlay {
   opacity: 1;
 }

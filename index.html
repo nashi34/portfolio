@@ -174,6 +174,21 @@
     color: white;
   }
 }
+/* Efeito de zoom na imagem */
+.gallery-item img.zoomed {
+  transform: scale(1.3);
+  transition: transform 0.3s ease;
+  z-index: 10;
+  position: relative;
+}
+
+/* No mobile: overlay começa desativado para não bloquear clique */
+@media (max-width: 768px) {
+  .gallery-item .overlay {
+    pointer-events: none;
+  }
+}
+
   </style>
   <link rel="icon" href="icon.png" type="image/png" />
 </head>
@@ -476,7 +491,5 @@ video.addEventListener('touchend', () => {
     });
   });
 </script>
-
-
 </body>
 </html>
