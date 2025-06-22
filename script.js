@@ -1,5 +1,3 @@
-// --- JS completo atualizado ---
-
 // Configuração do Intersection Observer para animações de fade-in
 function setupIntersectionObservers() {
   const sectionObserver = new IntersectionObserver((entries) => {
@@ -10,11 +8,11 @@ function setupIntersectionObservers() {
     });
   });
 
-  const galleryObserver = new IntersectionObserver((entries) => {
+  const galleryObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('fade-in');
-        galleryObserver.unobserve(entry.target);
+        observer.unobserve(entry.target); // Para não disparar múltiplas vezes
       }
     });
   }, { threshold: 0.1 });
@@ -28,6 +26,7 @@ function setupIntersectionObservers() {
   });
 }
 
+// Efeito da navbar ao fazer scroll
 function setupNavbarScrollEffect() {
   const navbar = document.querySelector('.navbar');
   if (!navbar) return;
@@ -41,21 +40,24 @@ function setupNavbarScrollEffect() {
   });
 }
 
+// Lightbox para imagens da galeria
 function setupGalleryLightbox() {
   document.querySelectorAll('.gallery-item img').forEach(img => {
     img.addEventListener('click', function () {
       const modal = document.createElement('div');
       modal.className = 'modal';
       modal.innerHTML = `
-        <span class="close">&times;</span>
+        <span class="close" aria-label="Fechar">&times;</span>
         <img class="modal-content" src="${this.src}" alt="${this.alt}">
       `;
       document.body.appendChild(modal);
 
+      // Mostrar modal
       modal.style.display = 'block';
 
+      // Fechar modal
       const closeModal = () => {
-        modal.style.display = 'none';
+        modal.style.opacity = '0';
         setTimeout(() => modal.remove(), 300);
       };
 
@@ -67,6 +69,7 @@ function setupGalleryLightbox() {
   });
 }
 
+// Pausa vídeos que saem da viewport
 function setupVideoControls() {
   document.querySelectorAll('.gallery-video').forEach(video => {
     const observer = new IntersectionObserver((entries) => {
@@ -80,34 +83,34 @@ function setupVideoControls() {
   });
 }
 
+// Toggle overlay dos vídeos da galeria (esconder overlay quando vídeo toca)
 function setupVideoOverlayToggle() {
   document.querySelectorAll('.gallery-video').forEach(video => {
-    const container = video.closest('.image-container');
+    const container = video.closest('.video-container');
     if (!container) return;
 
     const overlay = container.querySelector('.overlay');
     if (!overlay) return;
 
-    video.addEventListener('play', () => {
-      overlay.classList.add('hidden');
-    });
+    const hideOverlay = () => {
+      overlay.style.opacity = '0';
+      overlay.style.pointerEvents = 'none';
+    };
 
-    video.addEventListener('pause', () => {
-      overlay.classList.remove('hidden');
-    });
+    const showOverlay = () => {
+      overlay.style.opacity = '1';
+      overlay.style.pointerEvents = 'auto';
+    };
 
-    video.addEventListener('ended', () => {
-      overlay.classList.remove('hidden');
-    });
+    video.addEventListener('play', hideOverlay);
+    video.addEventListener('pause', showOverlay);
+    video.addEventListener('ended', showOverlay);
 
-    // Opcional para mobile touch
-    video.addEventListener('touchstart', () => {
-      overlay.classList.add('hidden');
-    });
-
+    // Touch events para mobile
+    video.addEventListener('touchstart', hideOverlay);
     video.addEventListener('touchend', () => {
       if (video.paused || video.ended) {
-        overlay.classList.remove('hidden');
+        showOverlay();
       }
     });
   });
@@ -155,7 +158,7 @@ function smoothScrollTo(targetElement) {
   requestAnimationFrame(animation);
 }
 
-// Inicialização
+// Inicialização após o carregamento do DOM
 document.addEventListener('DOMContentLoaded', () => {
   setupIntersectionObservers();
   setupNavbarScrollEffect();
@@ -164,13 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
   setupVideoOverlayToggle();
   setupSmoothScroll();
 
-  // Definir volume inicial de vídeo logo apenas ao tocar
-  document.querySelectorAll('.logo-video').forEach(video => {
-    video.addEventListener('play', () => {
-      if (video.volume > 0.1) {
-        video.volume = 0.1;
-      }
-    }, { once: true });
+  // Definir volume inicial de vídeos da galeria para som baixo
+  document.querySelectorAll('.gallery-video').forEach(video => {
+    video.volume = 0.05;
   });
 
   // Controle do menu mobile
@@ -182,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
       navLinks.classList.toggle('active');
     });
 
-    // Fecha o menu ao clicar em qualquer link dentro dele
+    // Fecha o menu ao clicar em qualquer link dentro dele (mobile)
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');

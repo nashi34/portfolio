@@ -8,7 +8,7 @@
   <link rel="icon" href="icon.png" type="image/png" />
 
   <style>
-    /* ==== Animações e visibilidade ==== */
+    /* ===== Animações e visibilidade ===== */
     .fade-in {
       opacity: 1 !important;
       transform: translateY(0) !important;
@@ -20,7 +20,7 @@
       transform: translateY(30px);
     }
 
-    /* ==== Galeria ==== */
+    /* ===== Galeria ===== */
     .gallery-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -36,18 +36,20 @@
       display: flex;
       flex-direction: column;
       position: relative;
+      background: #fff;
     }
 
     .gallery-item:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      cursor: pointer;
     }
 
-    /* Vídeo vertical */
+    /* Contêiner para vídeo vertical (9:16) */
     .video-container {
       position: relative;
       width: 100%;
-      padding-top: 177.78%; /* 9:16 ratio */
+      padding-top: 177.78%; /* 16:9 ratio invertido (9:16) */
       background-color: #1e1e1e;
     }
 
@@ -57,9 +59,11 @@
       width: 100%; height: 100%;
       object-fit: contain;
       display: block;
+      background: black;
+      border-radius: 10px 10px 0 0;
     }
 
-    /* Overlay */
+    /* Overlay de informações */
     .overlay {
       position: absolute;
       bottom: 0; left: 0; right: 0;
@@ -69,6 +73,7 @@
       opacity: 0;
       transition: opacity 0.3s ease;
       pointer-events: auto;
+      border-radius: 0 0 10px 10px;
     }
 
     .gallery-item:hover .overlay {
@@ -76,13 +81,14 @@
     }
 
     .overlay h3 {
-      margin-bottom: 0.5rem;
+      margin: 0 0 0.5rem;
       font-size: 1.2rem;
     }
 
     .overlay p {
       font-size: 0.9rem;
-      margin-bottom: 1rem;
+      margin: 0 0 1rem;
+      line-height: 1.3;
     }
 
     .tags {
@@ -98,9 +104,10 @@
       border-radius: 20px;
       font-size: 0.7rem;
       font-weight: 600;
+      user-select: none;
     }
 
-    /* ==== Responsividade ==== */
+    /* ===== Responsividade ===== */
     @media (max-width: 768px) {
       .gallery-container {
         grid-template-columns: 1fr;
@@ -109,13 +116,14 @@
       .overlay {
         opacity: 1 !important;
         padding: 1rem;
+        border-radius: 0;
       }
 
       .video-container {
         padding-top: 177.78%;
       }
 
-      /* Menu Toggle */
+      /* Menu Toggle Mobile */
       .menu-toggle {
         display: flex;
       }
@@ -131,6 +139,7 @@
         padding: 1rem 0;
         margin: 0;
         border-top: 1px solid #444;
+        z-index: 10;
       }
 
       .nav-links.active {
@@ -146,9 +155,10 @@
         display: block;
         padding: 0.5rem 1rem;
         color: white;
+        text-decoration: none;
       }
 
-      /* Overlay: pointer-events */
+      /* Overlay pointer-events ajustado para mobile */
       .gallery-item .overlay {
         pointer-events: none;
       }
@@ -158,12 +168,13 @@
       }
     }
 
-    /* ==== Menu Toggle ==== */
+    /* ===== Menu Toggle Desktop ===== */
     .menu-toggle {
       display: none;
       flex-direction: column;
       cursor: pointer;
       gap: 5px;
+      user-select: none;
     }
 
     .menu-toggle span {
@@ -171,34 +182,60 @@
       height: 3px;
       background: var(--secondary-color, #0099ff);
       border-radius: 2px;
+      transition: background-color 0.3s ease;
     }
 
-    /* ==== Navbar links (desktop) ==== */
+    .menu-toggle:focus,
+    .menu-toggle:hover {
+      outline: none;
+      background-color: #007acc;
+    }
+
+    /* ===== Navbar Desktop ===== */
     .nav-links {
       display: flex;
       gap: 1.5rem;
       list-style: none;
+      padding-left: 0;
+      margin: 0;
     }
 
-    /* ==== Zoom efeito imagem ==== */
+    .nav-links li a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a:focus {
+      color: #0099ff;
+      outline: none;
+    }
+
+    /* ===== Zoom efeito imagem (mobile) ===== */
     .gallery-item img.zoomed {
       transform: scale(1.3);
       transition: transform 0.3s ease;
       z-index: 10;
       position: relative;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
   <header>
-    <nav class="navbar">
-      <div class="logo">O meu portfólio</div>
-      <div class="menu-toggle" aria-label="Menu de navegação" role="button" tabindex="0">
+    <nav class="navbar" role="navigation" aria-label="Menu principal">
+      <div class="logo" tabindex="0">O meu portfólio</div>
+
+      <div class="menu-toggle" aria-label="Menu de navegação" role="button" tabindex="0" aria-expanded="false" aria-controls="nav-links">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      <ul class="nav-links">
+
+      <ul class="nav-links" id="nav-links">
         <li><a href="#home">Início</a></li>
         <li><a href="#projetos">Projetos</a></li>
         <li><a href="#contacto">Contactos</a></li>
@@ -206,116 +243,118 @@
     </nav>
   </header>
 
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <h1>Sobre Mim</h1>
-      <p>Chamo-me David Lopes, sou estudante de Engenharia de Multimédia no ISTEC, com forte interesse em Front-End Development, UI Design e Web Design.</p>
-      <p>Procuro crescer profissionalmente em projetos criativos e tecnológicos que combinem design, funcionalidade e experiência do utilizador.</p>
-      <p><b>Skills:</b> Adobe Creative Cloud, Web Design, UI/UX </p>
-    </div>
-  </section>
+  <main>
+    <section id="home" class="hero" tabindex="-1">
+      <div class="hero-content">
+        <h1>Sobre Mim</h1>
+        <p>Chamo-me David Lopes, sou estudante de Engenharia de Multimédia no ISTEC, com forte interesse em Front-End Development, UI Design e Web Design.</p>
+        <p>Procuro crescer profissionalmente em projetos criativos e tecnológicos que combinem design, funcionalidade e experiência do utilizador.</p>
+        <p><strong>Skills:</strong> Adobe Creative Cloud, Web Design, UI/UX</p>
+      </div>
+    </section>
 
-  <section id="projetos" class="projects">
-    <h2>Os meus projetos</h2>
-    <div class="gallery-container">
+    <section id="projetos" class="projects" tabindex="-1">
+      <h2>Os meus projetos</h2>
+      <div class="gallery-container" role="list">
 
-      <!-- Projeto Final -->
-      <div class="gallery-item">
-        <div class="video-container">
-          <video class="gallery-video" controls>
-            <source src="Final_Render_1.mp4" type="video/mp4" />
-            O teu navegador não suporta vídeos HTML5.
-          </video>
-          <div class="overlay">
-            <h3>Onboarding do Projeto Final</h3>
-            <p>Vídeo demonstrativo do meu projeto de conclusão</p>
-            <div class="tags">
-              <span>Multimédia</span>
-              <span>UI/UX</span>
-              <span>Vídeo</span>
+        <!-- Projeto Final -->
+        <article class="gallery-item" role="listitem" tabindex="0">
+          <div class="video-container">
+            <video class="gallery-video" controls preload="metadata" tabindex="0" aria-label="Vídeo Onboarding do Projeto Final">
+              <source src="Final_Render_1.mp4" type="video/mp4" />
+              O teu navegador não suporta vídeos HTML5.
+            </video>
+            <div class="overlay" aria-hidden="true">
+              <h3>Onboarding do Projeto Final</h3>
+              <p>Vídeo demonstrativo do meu projeto de conclusão</p>
+              <div class="tags" aria-label="Tags do projeto">
+                <span>Multimédia</span>
+                <span>UI/UX</span>
+                <span>Vídeo</span>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <!-- Banner -->
-      <div class="gallery-item">
-        <div class="image-container">
-          <img src="ad_logo.png" alt="Banner TW" />
-          <div class="overlay">
-            <h3>Banner Promocional TW</h3>
-            <p>Design gráfico com tipografia criativa para promoção digital.</p>
-            <div class="tags">
-              <span>Photoshop</span>
-              <span>Design</span>
-              <span>Identidade Visual</span>
+        <!-- Banner -->
+        <article class="gallery-item" role="listitem" tabindex="0">
+          <div class="image-container">
+            <img src="ad_logo.png" alt="Banner TW" tabindex="0" />
+            <div class="overlay" aria-hidden="true">
+              <h3>Banner Promocional TW</h3>
+              <p>Design gráfico com tipografia criativa para promoção digital.</p>
+              <div class="tags" aria-label="Tags do projeto">
+                <span>Photoshop</span>
+                <span>Design</span>
+                <span>Identidade Visual</span>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <!-- Logo com som -->
-      <div class="gallery-item">
-        <div class="video-container">
-          <video class="gallery-video" controls>
-            <source src="logo_com_som_final.mp4" type="video/mp4" />
-            O teu navegador não suporta vídeos HTML5.
-          </video>
-          <div class="overlay">
-            <h3>Logo Animado TW</h3>
-            <p>Animação do logótipo com som, usada em apresentações da equipa.</p>
-            <div class="tags">
-              <span>After Effects</span>
-              <span>Áudio</span>
-              <span>Branding</span>
+        <!-- Logo com som -->
+        <article class="gallery-item" role="listitem" tabindex="0">
+          <div class="video-container">
+            <video class="gallery-video" controls preload="metadata" tabindex="0" aria-label="Vídeo Logo Animado TW">
+              <source src="logo_com_som_final.mp4" type="video/mp4" />
+              O teu navegador não suporta vídeos HTML5.
+            </video>
+            <div class="overlay" aria-hidden="true">
+              <h3>Logo Animado TW</h3>
+              <p>Animação do logótipo com som, usada em apresentações da equipa.</p>
+              <div class="tags" aria-label="Tags do projeto">
+                <span>After Effects</span>
+                <span>Áudio</span>
+                <span>Branding</span>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <!-- Cubo Rubik -->
-      <div class="gallery-item">
-        <div class="image-container">
-          <img src="cubo_rubik.jpg" alt="Cubo Rubik 3D" />
-          <div class="overlay">
-            <h3>Cubo Rubik 3D</h3>
-            <p>Render 3D com iluminação e materiais realistas.</p>
-            <div class="tags">
-              <span>3D</span>
-              <span>Render</span>
-              <span>Blender</span>
+        <!-- Cubo Rubik -->
+        <article class="gallery-item" role="listitem" tabindex="0">
+          <div class="image-container">
+            <img src="cubo_rubik.jpg" alt="Cubo Rubik 3D" tabindex="0" />
+            <div class="overlay" aria-hidden="true">
+              <h3>Cubo Rubik 3D</h3>
+              <p>Render 3D com iluminação e materiais realistas.</p>
+              <div class="tags" aria-label="Tags do projeto">
+                <span>3D</span>
+                <span>Render</span>
+                <span>Blender</span>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <!-- Projeto Mobile Ad -->
-      <div class="gallery-item">
-        <div class="video-container">
-          <video class="gallery-video" controls>
-            <source src="ad_mobile_projeto.mp4" type="video/mp4" />
-            O teu navegador não suporta vídeos HTML5.
-          </video>
-          <div class="overlay">
-            <h3>Projeto Mobile Ad</h3>
-            <p>Vídeo vertical publicitário para redes sociais.</p>
-            <div class="tags">
-              <span>Vídeo</span>
-              <span>Mobile</span>
-              <span>Promo</span>
+        <!-- Projeto Mobile Ad -->
+        <article class="gallery-item" role="listitem" tabindex="0">
+          <div class="video-container">
+            <video class="gallery-video" controls preload="metadata" tabindex="0" aria-label="Vídeo Projeto Mobile Ad">
+              <source src="ad_mobile_projeto.mp4" type="video/mp4" />
+              O teu navegador não suporta vídeos HTML5.
+            </video>
+            <div class="overlay" aria-hidden="true">
+              <h3>Projeto Mobile Ad</h3>
+              <p>Vídeo vertical publicitário para redes sociais.</p>
+              <div class="tags" aria-label="Tags do projeto">
+                <span>Vídeo</span>
+                <span>Mobile</span>
+                <span>Promo</span>
+              </div>
             </div>
           </div>
-        </div>
+        </article>
+
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <section id="contacto" class="contact">
-    <h2>Contactos</h2>
-    <p><b>Email:</b> <a href="mailto:davidjplopes@gmail.com">davidjplopes@gmail.com</a></p>
-    <p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/david-lopes-774a16228/" target="_blank" rel="noopener noreferrer">link do meu perfil</a></p>
-  </section>
+    <section id="contacto" class="contact" tabindex="-1">
+      <h2>Contactos</h2>
+      <p><strong>Email:</strong> <a href="mailto:davidjplopes@gmail.com">davidjplopes@gmail.com</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/david-lopes-774a16228/" target="_blank" rel="noopener noreferrer">link do meu perfil</a></p>
+    </section>
+  </main>
 
   <footer>
     <p>&copy; 2025 David Lopes. Todos os direitos reservados.</p>
@@ -323,16 +362,20 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Menu toggle mobile
       const menuToggle = document.querySelector('.menu-toggle');
       const navLinks = document.querySelector('.nav-links');
-      menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-      });
+
+      // Função para alternar menu mobile com aria-expanded para acessibilidade
+      const toggleMenu = () => {
+        const isActive = navLinks.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', isActive);
+      };
+
+      menuToggle.addEventListener('click', toggleMenu);
       menuToggle.addEventListener('keypress', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
-          navLinks.classList.toggle('active');
           e.preventDefault();
+          toggleMenu();
         }
       });
 
@@ -350,11 +393,11 @@
         });
       }, observerOptions);
 
-      // Elementos para observar
+      // Elementos a observar
       const elementsToObserve = document.querySelectorAll('.projects, .about, .contact, .gallery-item');
       elementsToObserve.forEach(el => observer.observe(el));
 
-      // Efeito scroll navbar
+      // Efeito scroll na navbar
       const navbar = document.querySelector('.navbar');
       window.addEventListener('scroll', () => {
         if (window.scrollY > 10) {
@@ -364,20 +407,19 @@
         }
       });
 
-      // Controle de vídeos da galeria
+      // Controle dos vídeos da galeria
       const videos = document.querySelectorAll('.gallery-video');
       videos.forEach(video => {
-        // Define volume baixo
         video.volume = 0.05;
 
-        // Pausa outros vídeos ao reproduzir um
+        // Pausa outros vídeos quando um começa a tocar
         video.addEventListener('play', () => {
           videos.forEach(v => {
             if (v !== video && !v.paused) v.pause();
           });
         });
 
-        // Pausa vídeo se não visível
+        // Pausa vídeo se não estiver visível
         const vidObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (!entry.isIntersecting && !video.paused) {
@@ -387,7 +429,6 @@
         }, { threshold: 0.1 });
         vidObserver.observe(video);
 
-        // Controle overlay baseado no estado do vídeo
         const container = video.closest('.gallery-item');
         const overlay = container.querySelector('.overlay');
 
@@ -413,10 +454,9 @@
         });
       });
 
-      // Função para detectar mobile
+      // Detectar se é mobile para zoom nas imagens
       const isMobile = () => window.innerWidth <= 768;
 
-      // Zoom nas imagens (mobile)
       document.querySelectorAll('.gallery-item img').forEach(img => {
         img.addEventListener('click', (e) => {
           if (!isMobile()) return;
