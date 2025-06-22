@@ -1,6 +1,8 @@
+/* Importação de fontes */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap');
 
+/* Variáveis CSS */
 :root {
   --primary-color: #000000;
   --secondary-color: #ffffff;
@@ -8,12 +10,14 @@
   --font: 'Inter', sans-serif;
 }
 
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Body e fundo animado */
 body {
   font-family: var(--font);
   background: linear-gradient(270deg, #041820, #183e52, #142530, #083357);
@@ -24,6 +28,7 @@ body {
   padding-top: 60px;
 }
 
+/* Header e Footer */
 header {
   background-color: var(--primary-color);
   padding: 1rem 2rem;
@@ -33,15 +38,14 @@ header {
 footer {
   text-align: center;
   padding: 2rem;
-  background-color: #f4f4f4;
-  color: #ffffff;
   font-size: 0.9rem;
-
+  color: #ffffff;
   background: linear-gradient(270deg, #041820, #183e52, #142530, #083357);
   background-size: 600% 600%;
   animation: modernGradient 16s ease-in-out infinite;
 }
 
+/* Navbar */
 .navbar {
   position: fixed;
   top: 0;
@@ -57,11 +61,13 @@ footer {
   transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
+/* Navbar após scroll */
 .navbar.scrolled {
   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.95);
   background-color: var(--primary-color);
 }
 
+/* Logo */
 .logo {
   font-size: 2rem;
   font-weight: 600;
@@ -97,17 +103,17 @@ footer {
   padding: 5px;
   user-select: none;
   z-index: 1100;
-  position: relative; /* para evitar problemas de posicionamento */
+  position: relative;
 }
 
 .menu-toggle span {
-  display: block;   /* garante que cada barra é um bloco */
-  width: 100%;      /* barra com largura total do botão */
+  display: block;
+  width: 100%;
   height: 3px;
   background: var(--secondary-color);
   border-radius: 2px;
   transition: 0.3s;
-  pointer-events: none; /* importante! para o clique passar*/
+  pointer-events: none; /* para passar o clique */
 }
 
 /* Hero */
@@ -129,20 +135,20 @@ footer {
 .hero h1 {
   font-size: 3.5rem;
   margin-bottom: 1rem;
-  color: white; /* ou a cor que quiser para o texto */
   font-weight: 700;
-
-text-shadow:
-   -2px -2px 0 #000,
-   2px -2px 0 #000,
-   -2px 2px 0 #000,
-   2px 2px 0 #000,
-   -3px 0 0 #000,
-   3px 0 0 #000,
-   0 -3px 0 #000,
-   0 3px 0 #000;
+  color: white;
+  text-shadow:
+     -2px -2px 0 #000,
+     2px -2px 0 #000,
+     -2px 2px 0 #000,
+     2px 2px 0 #000,
+     -3px 0 0 #000,
+     3px 0 0 #000,
+     0 -3px 0 #000,
+     0 3px 0 #000;
 }
 
+/* Seções principais */
 .projects, .about, .contact {
   padding: 4rem 2rem;
   max-width: 1000px;
@@ -157,16 +163,16 @@ text-shadow:
 }
 
 .projects h2 {
+  color: #ffffff; 
   text-shadow:
-   -2px -2px 0 #000,
-   2px -2px 0 #000,
-   -2px 2px 0 #000,
-   2px 2px 0 #000,
-   -3px 0 0 #000,
-   3px 0 0 #000,
-   0 -3px 0 #000,
-   0 3px 0 #000;
-   color: #ffffff; 
+     -2px -2px 0 #000,
+     2px -2px 0 #000,
+     -2px 2px 0 #000,
+     2px 2px 0 #000,
+     -3px 0 0 #000,
+     3px 0 0 #000,
+     0 -3px 0 #000,
+     0 3px 0 #000;
 }
 
 .about p, .contact p {
@@ -177,27 +183,28 @@ text-shadow:
 }
 
 .contact h2 {
-  text-align: center;
-  color: white; /* ou a cor que quiser para o texto */
+  color: white;
   text-shadow:
-   -2px -2px 0 #000,
-   2px -2px 0 #000,
-   -2px 2px 0 #000,
-   2px 2px 0 #000,
-   -3px 0 0 #000,
-   3px 0 0 #000,
-   0 -3px 0 #000,
-   0 3px 0 #000;
+     -2px -2px 0 #000,
+     2px -2px 0 #000,
+     -2px 2px 0 #000,
+     2px 2px 0 #000,
+     -3px 0 0 #000,
+     3px 0 0 #000,
+     0 -3px 0 #000,
+     0 3px 0 #000;
 }
 
 .contact p {
-  color: white; /* ou a cor que quiser para o texto */
+  color: white;
   text-align: center;
 }
 
+/* Lista de projetos */
 .project-list {
   display: grid;
   gap: 2rem;
+  /* Responsividade abaixo */
 }
 
 .project {
@@ -224,7 +231,7 @@ text-shadow:
   color: #555;
 }
 
-
+/* Scroll behavior smooth */
 html {
   scroll-behavior: smooth;
 }
@@ -254,9 +261,10 @@ html {
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
+/* Container das imagens */
 .image-container {
   aspect-ratio: 16/9;
-  height: 100%; /* Garante altura consistente */
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.411);
   display: flex;
   justify-content: center;
@@ -269,11 +277,12 @@ html {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  margin: auto; /* Centraliza verticalmente */
+  margin: auto;
   display: block;
   background-color: oklab(0% 0 0 / 0);
 }
 
+/* Overlay na imagem */
 .overlay {
   position: absolute;
   bottom: 0;
@@ -287,149 +296,23 @@ html {
   transition: opacity 0.3s ease;
 }
 
+/* Overlay escondida */
 .overlay.hidden {
   opacity: 0 !important;
   pointer-events: none !important;
   transition: opacity 0.3s ease;
 }
 
-/* Mobile: overlay sempre com pointer-events: none e visível por CSS */
+/* Mobile: overlay sempre visível e sem pointer-events */
 @media (max-width: 768px) {
   .gallery-item .overlay {
     pointer-events: none;
+    opacity: 1;
+    padding: 1rem;
   }
 
   .gallery-item img.zoomed + .overlay {
     opacity: 0 !important;
-  }
-}
-
-
-.gallery-item:hover .overlay {
-  opacity: 1;
-}
-
-.overlay h3 {
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
-}
-
-.overlay p {
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.tags span {
-  background-color: var(--accent-color);
-  color: white;
-  padding: 0.3rem 0.6rem;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 600;
-}
-
-.tags span {
-  background-color: #0011ff !important;
-  color: white !important;
-}
-
-/* Zoom toggle na imagem */
-.gallery-item img.zoomed {
-  transform: scale(1.2);
-  transition: transform 0.3s ease;
-  z-index: 10;
-  position: relative;
-}
-
-/* Esconde o overlay quando a imagem estiver com zoom */
-.gallery-item img.zoomed + .overlay {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transition: opacity 0.3s ease;
-}
-
-
-/* Lightbox/Modal */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.9);
-  overflow: auto;
-}
-
-.modal-content {
-  margin: auto;
-  display: block;
-  max-width: 90%;
-  max-height: 90%;
-  margin-top: 5vh;
-}
-
-.close {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Vídeo */
-.gallery-video {
-  background-color: rgba(0, 0, 0, 0);
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  border-radius: 6px;
-}
-
-.gallery-video.logo-video {
-  object-fit: contain;
-}
-
-/* Remove a seção de vídeo separada se quiser */
-.video-section {
-  display: none;
-}
-
-/* Responsividade */
-
-/* Desktop médio/grande */
-@media (min-width: 768px) {
-  .project-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Desktop maior */
-@media (min-width: 1024px) {
-  .project-list {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  /* Galeria 1 coluna */
-  .gallery-container {
-    grid-template-columns: 1fr;
-  }
-
-  .overlay {
-    opacity: 1;
-    padding: 1rem;
   }
 
   .projects, .about, .contact {
@@ -444,90 +327,49 @@ html {
     font-size: 2rem;
   }
 
-  /* Esconde links e mostra botão hambúrguer */
-.nav-links {
-  position: fixed;
-  top: 60px;
-  right: 0;
-  width: 40vw;
-  max-width: 170px;
-  height: 28vh;
-  background-color: #000000;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  padding: 0.4rem 1rem;
+  /* Menu mobile */
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    width: 60vw;
+    max-width: 170px;
+    height: auto;
+    max-height: 60vh;
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 0.8rem 1.2rem;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    transform: translateX(100%) translateY(23px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease;
+    z-index: 1050;
+    overflow-y: auto;
+  }
 
-  border: 2px solid #ffffff;
-  border-radius: 5px;
+  .nav-links.active {
+    transform: translateX(0) translateY(23px);
+    opacity: 1;
+    pointer-events: auto;
+    top: 60px;
+  }
 
-  transform: translateX(100%) translateY(23px);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease;
-  z-index: 1050;
-}
-
-.nav-links.active {
-  transform: translateX(0) translateY(23px);
-  opacity: 1;
-  pointer-events: auto;
-}
-
-
-
-  /* Esconde nav-links no mobile por padrão */
   .nav-links a {
     font-size: 1.2rem;
   }
 
-  /* Botão hambúrguer */
   .menu-toggle {
     display: flex;
   }
 }
-/* Mobile: navbar está estática (default) */
-.navbar {
-  position: flex;
-}
 
-/* Desktop (a partir de 769px): navbar fixa no topo */
-@media (min-width: 769px) {
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
-
-  body {
-    padding-top: 60px; /* Ajuste para altura da navbar fixa */
-  }
-}
-
-/* Para garantir que no mobile o padding-top no body não fique */
-@media (max-width: 768px) {
-  body {
-    padding-top: 0;
-  }
-}
-
+/* Animação do fundo */
 @keyframes modernGradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  25% {
-    background-position: 50% 100%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  75% {
-    background-position: 50% 0%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
-
-

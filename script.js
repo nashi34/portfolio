@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupNavbarScrollEffect();
   setupGalleryLightbox();
   setupVideoControls();
-  setupVideoOverlayToggle(); // <-- nova função chamada aqui
+  setupVideoOverlayToggle();
   setupSmoothScroll();
 
   // Definir volume inicial de vídeo logo apenas ao tocar
@@ -172,21 +172,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, { once: true });
   });
-});
 
-document.addEventListener('DOMContentLoaded', () => {
+  // Controle do menu mobile
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
 
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-
-  // Coloque aqui o código para fechar o menu ao clicar no link
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
     });
-  });
-});
 
+    // Fecha o menu ao clicar em qualquer link dentro dele
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  }
+});
