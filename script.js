@@ -8,15 +8,16 @@ function setupIntersectionObservers() {
     });
   });
 
-  const galleryObserver = new IntersectionObserver((entries, observer) => {
+  const galleryObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('fade-in');
-        observer.unobserve(entry.target); // Para não disparar múltiplas vezes
+        galleryObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
 
+  // Corrigido o seletor .projects
   document.querySelectorAll('.projects, .about, .contact').forEach(el => {
     sectionObserver.observe(el);
   });
@@ -26,7 +27,6 @@ function setupIntersectionObservers() {
   });
 }
 
-// Efeito da navbar ao fazer scroll
 function setupNavbarScrollEffect() {
   const navbar = document.querySelector('.navbar');
   if (!navbar) return;
@@ -40,24 +40,21 @@ function setupNavbarScrollEffect() {
   });
 }
 
-// Lightbox para imagens da galeria
 function setupGalleryLightbox() {
   document.querySelectorAll('.gallery-item img').forEach(img => {
     img.addEventListener('click', function () {
       const modal = document.createElement('div');
       modal.className = 'modal';
       modal.innerHTML = `
-        <span class="close" aria-label="Fechar">&times;</span>
+        <span class="close">&times;</span>
         <img class="modal-content" src="${this.src}" alt="${this.alt}">
       `;
       document.body.appendChild(modal);
 
-      // Mostrar modal
       modal.style.display = 'block';
 
-      // Fechar modal
       const closeModal = () => {
-        modal.style.opacity = '0';
+        modal.style.display = 'none';
         setTimeout(() => modal.remove(), 300);
       };
 
@@ -69,7 +66,6 @@ function setupGalleryLightbox() {
   });
 }
 
-// Pausa vídeos que saem da viewport
 function setupVideoControls() {
   document.querySelectorAll('.gallery-video').forEach(video => {
     const observer = new IntersectionObserver((entries) => {
@@ -80,39 +76,6 @@ function setupVideoControls() {
       });
     }, { threshold: 0.1 });
     observer.observe(video);
-  });
-}
-
-// Toggle overlay dos vídeos da galeria (esconder overlay quando vídeo toca)
-function setupVideoOverlayToggle() {
-  document.querySelectorAll('.gallery-video').forEach(video => {
-    const container = video.closest('.video-container');
-    if (!container) return;
-
-    const overlay = container.querySelector('.overlay');
-    if (!overlay) return;
-
-    const hideOverlay = () => {
-      overlay.style.opacity = '0';
-      overlay.style.pointerEvents = 'none';
-    };
-
-    const showOverlay = () => {
-      overlay.style.opacity = '1';
-      overlay.style.pointerEvents = 'auto';
-    };
-
-    video.addEventListener('play', hideOverlay);
-    video.addEventListener('pause', showOverlay);
-    video.addEventListener('ended', showOverlay);
-
-    // Touch events para mobile
-    video.addEventListener('touchstart', hideOverlay);
-    video.addEventListener('touchend', () => {
-      if (video.paused || video.ended) {
-        showOverlay();
-      }
-    });
   });
 }
 
@@ -158,129 +121,31 @@ function smoothScrollTo(targetElement) {
   requestAnimationFrame(animation);
 }
 
-// Inicialização após o carregamento do DOM
+// Inicialização
 document.addEventListener('DOMContentLoaded', () => {
   setupIntersectionObservers();
   setupNavbarScrollEffect();
   setupGalleryLightbox();
   setupVideoControls();
-  setupVideoOverlayToggle();
   setupSmoothScroll();
 
-document.querySelectorAll('.gallery-video').forEach(video => {
-  // Configura volume baixo
-  video.volume = 0.05;
-  
-  // Controle de estados
-  video.addEventListener('play', function() {
-    this.setAttribute('playing', '');
-    this.removeAttribute('paused');
-  });
-  
-  video.addEventListener('pause', function() {
-    this.removeAttribute('playing');
-    this.setAttribute('paused', '');
-  });
-  
-  video.addEventListener('ended', function() {
-    this.removeAttribute('playing');
-    this.setAttribute('paused', '');
-  });
-
-  // Comportamento hover para desktop
-  if (window.innerWidth > 768) {
-    const container = video.closest('.gallery-item');
-    const overlay = container.querySelector('.overlay');
-    
-    container.addEventListener('mouseenter', () => {
-      if (video.paused) {
-        overlay.style.opacity = '1';
+  // Definir volume inicial de vídeo logo apenas ao tocar
+  document.querySelectorAll('.logo-video').forEach(video => {
+    video.addEventListener('play', () => {
+      if (video.volume > 0.1) {
+        video.volume = 0.1;
       }
-    });
-    
-    container.addEventListener('mouseleave', () => {
-      overlay.style.opacity = '0';
-    });
-  }
-});
-
-  // Controle do menu mobile
- // const menuToggle = document.querySelector('.menu-toggle');
- // const navLinks = document.querySelector('.nav-links');
-
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-
-    // Fecha o menu ao clicar em qualquer link dentro dele (mobile)
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-      });
-    });
-  }
-  // Controle dos vídeos - MOBILE FIRST
-document.querySelectorAll('.gallery-video').forEach(video => {
-  video.volume = 0.05;
-  const container = video.closest('.gallery-item');
-  const overlay = container?.querySelector('.overlay');
-
-  if (!overlay) return;
-
-// Controle dos vídeos no mobile
-document.querySelectorAll('.gallery-video').forEach(video => {
-  // Atualiza atributos de estado
-  video.addEventListener('play', () => {
-    video.setAttribute('playing', '');
-    video.removeAttribute('paused');
-  });
-  
-  video.addEventListener('pause', () => {
-    video.removeAttribute('playing');
-    video.setAttribute('paused', '');
-  });
-  
-  video.addEventListener('ended', () => {
-    video.removeAttribute('playing');
-    video.setAttribute('paused', '');
-  });
-
-  // Esconde overlay imediatamente ao tocar no mobile
-  video.addEventListener('touchstart', () => {
-    if (window.innerWidth <= 768) {
-      const overlay = video.closest('.gallery-item')?.querySelector('.overlay');
-      if (overlay) {
-        overlay.style.opacity = '0';
-        overlay.style.pointerEvents = 'none';
-      }
-    }
+    }, { once: true });
   });
 });
 
-  // Controle por estado do vídeo
-  video.addEventListener('play', () => {
-    overlay.style.opacity = '0';
-    overlay.style.pointerEvents = 'none';
-  });
+document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
 
-  video.addEventListener('pause', () => {
-    overlay.style.opacity = '1';
-    overlay.style.pointerEvents = 'auto';
-  });
-
-  video.addEventListener('ended', () => {
-    overlay.style.opacity = '1';
-    overlay.style.pointerEvents = 'auto';
-  });
-
-  // Pausa outros vídeos quando um começa
-  video.addEventListener('play', () => {
-    document.querySelectorAll('.gallery-video').forEach(v => {
-      if (v !== video && !v.paused) {
-        v.pause();
-      }
-    });
-  });
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active'); // ou 'open', conforme seu CSS
   });
 });
+
+

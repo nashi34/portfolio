@@ -1,51 +1,33 @@
-/* Importação de fontes */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap');
 
-/* Variáveis CSS */
 :root {
-  --primary-color: #000000;
+  --primary-color: #1e1e1e;
   --secondary-color: #ffffff;
-  --accent-color: #0026ff;
+  --accent-color: #ff0000;
   --font: 'Inter', sans-serif;
 }
 
-/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body e fundo animado */
 body {
   font-family: var(--font);
-  background: linear-gradient(270deg, #041820, #183e52, #142530, #083357);
-  background-size: 600% 600%;
-  animation: modernGradient 16s ease-in-out infinite;
+  background-color: var(--secondary-color);
   color: var(--primary-color);
   line-height: 1.6;
   padding-top: 60px;
 }
 
-/* Header e Footer */
 header {
   background-color: var(--primary-color);
   padding: 1rem 2rem;
   color: var(--secondary-color);
 }
 
-footer {
-  text-align: center;
-  padding: 2rem;
-  font-size: 0.9rem;
-  color: #ffffff;
-  background: linear-gradient(270deg, #041820, #183e52, #142530, #083357);
-  background-size: 600% 600%;
-  animation: modernGradient 16s ease-in-out infinite;
-}
-
-/* Navbar */
 .navbar {
   position: fixed;
   top: 0;
@@ -61,13 +43,11 @@ footer {
   transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-/* Navbar após scroll */
 .navbar.scrolled {
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.95);
   background-color: var(--primary-color);
 }
 
-/* Logo */
 .logo {
   font-size: 2rem;
   font-weight: 600;
@@ -94,88 +74,49 @@ footer {
 
 /* Botão hambúrguer - mobile */
 .menu-toggle {
-  display: none; /* Escondido no desktop */
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 30px;
-  height: 21px;
-  background: transparent;
-  border: none;
+  width: 40px;   /* área maior para clique */
+  height: 30px;
   cursor: pointer;
-  padding: 0;
-  z-index: 1000;
+  padding: 5px;
+  user-select: none;
+  z-index: 1100;
+  position: relative; /* para evitar problemas de posicionamento */
 }
 
-.menu-toggle .bar {
-  display: block;
-  width: 100%;
+.menu-toggle span {
+  display: block;   /* garante que cada barra é um bloco */
+  width: 100%;      /* barra com largura total do botão */
   height: 3px;
-  background: white;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-/* Mostrar apenas no mobile */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-  }
-  
-  .nav-links {
-    position: fixed;
-    top: 10px; /* Ajustado para ficar mais no topo */
-    right: -100%;
-    width: 20%;
-    max-width: 120px;
-    background: #000;
-    flex-direction: column;
-    padding: 1rem;
-    transition: right 0.3s ease;
-    z-index: 999;
-    border: 2px solid white;
-    border-radius: 5px;
-    margin: 10;
-    list-style: none;
-  }
-  
-  .nav-links.active {
-    right: 10;
-  }
+  background: var(--secondary-color);
+  border-radius: 2px;
+  transition: 0.3s;
+  pointer-events: none; /* importante! para o clique passar*/
 }
 
 /* Hero */
 .hero {
-  padding: 5rem 2rem;
+  padding: 4rem 2rem;
   text-align: center;
+  background: linear-gradient(135deg, #f5f5f5, #eaeaea);
   font-family: 'Urbanist', sans-serif;
-  margin-top: 1px; /* para compensar navbar fixa */
-  color: #ffffff;
+  margin-top: 70px; /* para compensar navbar fixa */
 }
 
 .hero p {
   font-size: 1.30rem;
   font-weight: 400;
-  color: #ffffff; 
+  color: #000000; 
   text-align: center;
 }
 
 .hero h1 {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
-  font-weight: 700;
-  color: white;
-  text-shadow:
-     -2px -2px 0 #000,
-     2px -2px 0 #000,
-     -2px 2px 0 #000,
-     2px 2px 0 #000,
-     -3px 0 0 #000,
-     3px 0 0 #000,
-     0 -3px 0 #000,
-     0 3px 0 #000;
 }
 
-/* Seções principais */
 .projects, .about, .contact {
   padding: 4rem 2rem;
   max-width: 1000px;
@@ -189,19 +130,6 @@ footer {
   text-align: center;
 }
 
-.projects h2 {
-  color: #ffffff; 
-  text-shadow:
-     -2px -2px 0 #000,
-     2px -2px 0 #000,
-     -2px 2px 0 #000,
-     2px 2px 0 #000,
-     -3px 0 0 #000,
-     3px 0 0 #000,
-     0 -3px 0 #000,
-     0 3px 0 #000;
-}
-
 .about p, .contact p {
   font-size: 1.30rem;
   font-weight: 400;
@@ -209,29 +137,13 @@ footer {
   text-align: left;
 }
 
-.contact h2 {
-  color: white;
-  text-shadow:
-     -2px -2px 0 #000,
-     2px -2px 0 #000,
-     -2px 2px 0 #000,
-     2px 2px 0 #000,
-     -3px 0 0 #000,
-     3px 0 0 #000,
-     0 -3px 0 #000,
-     0 3px 0 #000;
-}
-
 .contact p {
-  color: white;
   text-align: center;
 }
 
-/* Lista de projetos */
 .project-list {
   display: grid;
   gap: 2rem;
-  /* Responsividade abaixo */
 }
 
 .project {
@@ -258,7 +170,14 @@ footer {
   color: #555;
 }
 
-/* Scroll behavior smooth */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f4f4f4;
+  color: #666;
+  font-size: 0.9rem;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -272,8 +191,7 @@ html {
 }
 
 .projects {
-  padding: 5rem 2rem;
-  background-color: #00000023;
+  background-color: #6e6b6b5b;
 }
 
 .gallery-item {
@@ -281,7 +199,6 @@ html {
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
 }
 
 .gallery-item:hover {
@@ -289,11 +206,10 @@ html {
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* Container das imagens */
 .image-container {
   aspect-ratio: 16/9;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.411);
+  height: 100%; /* Garante altura consistente */
+  background-color: #726e6ebd;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -305,14 +221,10 @@ html {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  margin: auto;
+  margin: auto; /* Centraliza verticalmente */
   display: block;
-  background-color: oklab(0% 0 0 / 0);
-  cursor: zoom-in;
-  transition: transform 0.3s ease;
 }
 
-/* Overlay na imagem */
 .overlay {
   position: absolute;
   bottom: 0;
@@ -321,72 +233,119 @@ html {
   background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
   color: white;
   padding: 2rem 1.5rem 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
   opacity: 1;
-  pointer-events: auto;
-  transition: opacity 0.3s ease;
-  border-radius: 0 0 10px 10px;
+}
+
+.overlay h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.overlay p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.tags {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  user-select: none;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-/* Overlay escondida */
-.overlay.hidden {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transition: opacity 0.3s ease;
+.tags span {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
 }
 
-/* No zoom da imagem, overlay sumir */
-.image-container img.zoomed + .overlay {
-  opacity: 0 !important;
-  pointer-events: none !important;
+.tags span {
+  background-color: #ff0000 !important;
+  color: white !important;
 }
 
-/* Vídeos */
-.video-container {
-  position: relative;
-  width: 100%;
-  padding-top: 177.78%; /* Proporção 9:16 */
-  background-color: #1e1e1e;
-}
-
-.gallery-video {
-  position: absolute;
-  top: 0;
+/* Lightbox/Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
   left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  display: block;
-  cursor: pointer;
-  border-radius: 10px;
+  background-color: rgba(0,0,0,0.9);
+  overflow: auto;
 }
 
-/* Mobile: overlay some quando vídeo está tocando */
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+  margin-top: 5vh;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Vídeo */
+.gallery-video {
+  background-color: #b9b3b3b7;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
+}
+
+.gallery-video.logo-video {
+  object-fit: cover;
+}
+
+/* Remove a seção de vídeo separada se quiser */
+.video-section {
+  display: none;
+}
+
+/* Responsividade */
+
+/* Desktop médio/grande */
+@media (min-width: 768px) {
+  .project-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop maior */
+@media (min-width: 1024px) {
+  .project-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
-  /* Comportamento do overlay igual ao desktop */
-  .gallery-item .overlay {
+  /* Galeria 1 coluna */
+  .gallery-container {
+    grid-template-columns: 1fr;
+  }
+
+  .overlay {
     opacity: 1;
-    pointer-events: auto;
-    transition: opacity 0.3s ease;
-  }
-
-  .gallery-video[playing] + .overlay,
-  .gallery-video:not([paused]) + .overlay {
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
-
-  .gallery-video[paused] + .overlay {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
-
-  /* Restante do seu CSS mobile... */
-  .projects, .about, .contact {
-    padding: 2rem 1rem;
+    padding: 1rem;
   }
 
   .projects, .about, .contact {
@@ -401,94 +360,65 @@ html {
     font-size: 2rem;
   }
 
+  /* Esconde links e mostra botão hambúrguer */
+.nav-links {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40vw;
+  max-width: 200px;
+  height: 40vh;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1.5rem;
+
+  transform: translateX(100%) translateY(23px);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1050;
+}
+
+.nav-links.active {
+  transform: translateX(0) translateY(23px);
+}
+
+
+
+
+  /* Esconde nav-links no mobile por padrão */
   .nav-links a {
     font-size: 1.2rem;
   }
 
+  /* Botão hambúrguer */
   .menu-toggle {
     display: flex;
   }
+}
+/* Mobile: navbar está estática (default) */
+.navbar {
+  position: flex;
+}
 
-  /* Overlay do menu */
-  .navbar::after {
-    content: '';
+/* Desktop (a partir de 769px): navbar fixa no topo */
+@media (min-width: 769px) {
+  .navbar {
     position: fixed;
-    top: 60px;
+    top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.7);
-    z-index: 999;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
+    width: 100%;
   }
 
-  .navbar.active::after {
-    opacity: 1;
-    pointer-events: auto;
+  body {
+    padding-top: 60px; /* Ajuste para altura da navbar fixa */
   }
 }
 
-/* Animação do fundo */
-@keyframes modernGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Para garantir que no mobile o padding-top no body não fique */
+@media (max-width: 768px) {
+  body {
+    padding-top: 0;
+  }
 }
 
-/* === Modal para imagem em destaque === */
-
-#imageModal {
-  display: none;
-  position: fixed;
-  z-index: 3000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.9);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-#imageModal.show {
-  opacity: 1;
-}
-
-#imageModal img {
-  margin: auto;
-  display: block;
-  max-width: 90%;
-  max-height: 80vh;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255,255,255,0.3);
-  cursor: default;
-  transition: transform 0.3s ease;
-}
-
-#imageModal #caption {
-  margin: 15px auto;
-  text-align: center;
-  color: #ddd;
-  font-size: 1.1rem;
-  max-width: 90%;
-  user-select: none;
-}
-
-#imageModal .close {
-  position: fixed;
-  top: 20px;
-  right: 30px;
-  color: #fff;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  user-select: none;
-  transition: color 0.3s ease;
-}
-
-#imageModal .close:hover {
-  color: #aaa;
-}
