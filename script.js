@@ -181,4 +181,12 @@ document.addEventListener('DOMContentLoaded', () => {
   menuToggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
   });
+
+  // Coloque aqui o código para fechar o menu ao clicar no link
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
 });
+
