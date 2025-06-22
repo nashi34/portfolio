@@ -16,7 +16,7 @@
 
 body {
   font-family: var(--font);
-  background: linear-gradient(270deg, #1f0229, #22172e, #1a032a, #312e41);
+  background: linear-gradient(270deg, #1f0229, #17182e, #14032a, #2e3441);
   background-size: 800% 800%;
   animation: gradientAnimation 20s ease infinite;
   color: var(--primary-color);
@@ -223,7 +223,7 @@ html {
 .image-container {
   aspect-ratio: 16/9;
   height: 100%; /* Garante altura consistente */
-  background-color: #3a0b50;
+  background-color: #390d5786;
   display: flex;
   justify-content: center;
   align-items: center;
