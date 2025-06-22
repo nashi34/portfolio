@@ -388,13 +388,11 @@
       const overlay = item.querySelector('.overlay');
 
       if (video && overlay) {
-        // Quando o vídeo começa a tocar, esconde a overlay
         video.addEventListener('play', () => {
           overlay.style.opacity = '0';
-          overlay.style.pointerEvents = 'none';  // pra não interferir no clique
+          overlay.style.pointerEvents = 'none';
         });
 
-        // Quando o vídeo é pausado ou termina, mostra a overlay
         video.addEventListener('pause', () => {
           overlay.style.opacity = '1';
           overlay.style.pointerEvents = 'auto';

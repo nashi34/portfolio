@@ -282,7 +282,8 @@ html {
   background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
   color: white;
   padding: 2rem 1.5rem 1.5rem;
-  opacity: 0;
+  opacity: 1;
+  pointer-events: auto;
   transition: opacity 0.3s ease;
 }
 
