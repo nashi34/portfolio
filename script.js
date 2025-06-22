@@ -167,10 +167,42 @@ document.addEventListener('DOMContentLoaded', () => {
   setupVideoOverlayToggle();
   setupSmoothScroll();
 
-  // Definir volume inicial de vídeos da galeria para som baixo
-  document.querySelectorAll('.gallery-video').forEach(video => {
-    video.volume = 0.05;
+document.querySelectorAll('.gallery-video').forEach(video => {
+  // Configura volume baixo
+  video.volume = 0.05;
+  
+  // Controle de estados
+  video.addEventListener('play', function() {
+    this.setAttribute('playing', '');
+    this.removeAttribute('paused');
   });
+  
+  video.addEventListener('pause', function() {
+    this.removeAttribute('playing');
+    this.setAttribute('paused', '');
+  });
+  
+  video.addEventListener('ended', function() {
+    this.removeAttribute('playing');
+    this.setAttribute('paused', '');
+  });
+
+  // Comportamento hover para desktop
+  if (window.innerWidth > 768) {
+    const container = video.closest('.gallery-item');
+    const overlay = container.querySelector('.overlay');
+    
+    container.addEventListener('mouseenter', () => {
+      if (video.paused) {
+        overlay.style.opacity = '1';
+      }
+    });
+    
+    container.addEventListener('mouseleave', () => {
+      overlay.style.opacity = '0';
+    });
+  }
+});
 
   // Controle do menu mobile
   const menuToggle = document.querySelector('.menu-toggle');

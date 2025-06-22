@@ -339,21 +339,27 @@ html {
 
 /* Mobile: overlay some quando vídeo está tocando */
 @media (max-width: 768px) {
+  /* Comportamento do overlay igual ao desktop */
   .gallery-item .overlay {
+    opacity: 1;
+    pointer-events: auto;
     transition: opacity 0.3s ease;
   }
 
-  /* Esconde overlay quando vídeo está tocando */
   .gallery-video[playing] + .overlay,
   .gallery-video:not([paused]) + .overlay {
     opacity: 0 !important;
     pointer-events: none !important;
   }
 
-  /* Mostra overlay quando vídeo está pausado */
   .gallery-video[paused] + .overlay {
     opacity: 1 !important;
     pointer-events: auto !important;
+  }
+
+  /* Restante do seu CSS mobile... */
+  .projects, .about, .contact {
+    padding: 2rem 1rem;
   }
 
   .projects, .about, .contact {
