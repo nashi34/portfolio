@@ -405,6 +405,42 @@
       }
     });
   });
+  video.addEventListener('touchstart', () => {
+  overlay.style.opacity = '0';
+  overlay.style.pointerEvents = 'none';
+});
+
+video.addEventListener('touchend', () => {
+  if (video.paused || video.ended) {
+    overlay.style.opacity = '1';
+    overlay.style.pointerEvents = 'auto';
+  }
+});
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      const video = item.querySelector('.gallery-video');
+      const overlay = item.querySelector('.overlay');
+
+      if (video && overlay) {
+        const hideOverlay = () => overlay.classList.add('hidden');
+        const showOverlay = () => overlay.classList.remove('hidden');
+
+        video.addEventListener('play', hideOverlay);
+        video.addEventListener('pause', showOverlay);
+        video.addEventListener('ended', showOverlay);
+
+        // Eventos touch para mobile
+        video.addEventListener('touchstart', hideOverlay);
+        video.addEventListener('touchend', () => {
+          if (video.paused || video.ended) {
+            showOverlay();
+          }
+        });
+      }
+    });
+  });
 </script>
 
 </body>

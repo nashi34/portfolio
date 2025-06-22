@@ -287,6 +287,12 @@ html {
   transition: opacity 0.3s ease;
 }
 
+.overlay.hidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s ease;
+}
+
 .gallery-item:hover .overlay {
   opacity: 1;
 }

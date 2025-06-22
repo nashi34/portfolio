@@ -1,3 +1,5 @@
+// --- JS completo atualizado ---
+
 // Configuração do Intersection Observer para animações de fade-in
 function setupIntersectionObservers() {
   const sectionObserver = new IntersectionObserver((entries) => {
@@ -17,7 +19,6 @@ function setupIntersectionObservers() {
     });
   }, { threshold: 0.1 });
 
-  // Corrigido o seletor .projects
   document.querySelectorAll('.projects, .about, .contact').forEach(el => {
     sectionObserver.observe(el);
   });
@@ -79,6 +80,39 @@ function setupVideoControls() {
   });
 }
 
+function setupVideoOverlayToggle() {
+  document.querySelectorAll('.gallery-video').forEach(video => {
+    const container = video.closest('.image-container');
+    if (!container) return;
+
+    const overlay = container.querySelector('.overlay');
+    if (!overlay) return;
+
+    video.addEventListener('play', () => {
+      overlay.classList.add('hidden');
+    });
+
+    video.addEventListener('pause', () => {
+      overlay.classList.remove('hidden');
+    });
+
+    video.addEventListener('ended', () => {
+      overlay.classList.remove('hidden');
+    });
+
+    // Opcional para mobile touch
+    video.addEventListener('touchstart', () => {
+      overlay.classList.add('hidden');
+    });
+
+    video.addEventListener('touchend', () => {
+      if (video.paused || video.ended) {
+        overlay.classList.remove('hidden');
+      }
+    });
+  });
+}
+
 // Scroll suave com animação para links do menu
 function setupSmoothScroll() {
   document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
@@ -127,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupNavbarScrollEffect();
   setupGalleryLightbox();
   setupVideoControls();
+  setupVideoOverlayToggle(); // <-- nova função chamada aqui
   setupSmoothScroll();
 
   // Definir volume inicial de vídeo logo apenas ao tocar
@@ -144,8 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelector('.nav-links');
 
   menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active'); // ou 'open', conforme seu CSS
+    navLinks.classList.toggle('active');
   });
 });
-
-
