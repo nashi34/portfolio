@@ -46,7 +46,7 @@
       position: relative;
       width: 100%;
       padding-top: 177.78%; /* Proporção 9:16 para vídeo vertical */
-      background-color: #1e1e1e;
+      background-color: #0e0bd3;
     }
     
     /* Estilo ajustado para o vídeo vertical */
@@ -373,10 +373,30 @@
       });
     });
   </script>
-    <!-- teu resto do body aqui -->
-     <script src="script.js" defer></script>
-</body>
-</html>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const videos = document.querySelectorAll('video');
+
+  videos.forEach(video => {
+    // Sempre inicia com volume em 5%
+    video.volume = 0.05;
+
+    video.addEventListener('play', () => {
+      video.volume = 0.05;
+
+      const overlay = video.closest('.gallery-item')?.querySelector('.overlay');
+      if (overlay) {
+        overlay.style.opacity = '0';
+
+        // Opcional: esconde do fluxo após a transição
+        setTimeout(() => {
+          overlay.style.display = 'none';
+        }, 300);
+      }
+    });
+  });
+});
+</script>
 
 </body>
 </html>
