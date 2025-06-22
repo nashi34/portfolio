@@ -94,26 +94,51 @@ footer {
 
 /* Botão hambúrguer - mobile */
 .menu-toggle {
-  display: none; /* default hidden, ativar no mobile */
+  display: none; /* Escondido no desktop */
   flex-direction: column;
   justify-content: space-between;
-  width: 40px;   /* área maior para clique */
-  height: 30px;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
   cursor: pointer;
-  padding: 5px;
-  user-select: none;
-  z-index: 1100;
-  position: relative;
+  padding: 0;
+  z-index: 1000;
 }
 
-.menu-toggle span {
+.menu-toggle .bar {
   display: block;
   width: 100%;
   height: 3px;
-  background: var(--secondary-color);
-  border-radius: 2px;
-  transition: 0.3s;
-  pointer-events: none; /* passar o clique para o menu-toggle */
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Mostrar apenas no mobile */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: calc(100vh - 60px);
+    background: #000;
+    flex-direction: column;
+    padding: 2rem;
+    transition: right 0.3s ease;
+    z-index: 999;
+    border-left: 2px solid white;
+  }
+  
+  .nav-links.active {
+    right: 0;
+  }
 }
 
 /* Hero */
@@ -372,30 +397,6 @@ html {
 
   .hero h1 {
     font-size: 2rem;
-  }
-
-  /* Menu mobile */
-  .nav-links {
-    position: fixed;
-    top: 60px;
-    right: 0;
-    width: 60vw;
-    max-width: 300px;
-    height: calc(100vh - 60px);
-    background-color: #000;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 2rem;
-    border-left: 2px solid #fff;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 1000;
-    overflow-y: auto;
-  }
-
-  .nav-links.active {
-    transform: translateX(0);
   }
 
   .nav-links a {
