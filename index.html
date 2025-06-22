@@ -373,7 +373,13 @@
       });
     });
   </script>
-    <!-- teu resto do body aqui -->
      <script src="script.js" defer></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.gallery-video').forEach(video => {
+      video.volume = 0.05; 
+    });
+  });
+</script>
 </body>
 </html>
