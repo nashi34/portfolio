@@ -337,16 +337,23 @@ html {
   border-radius: 10px;
 }
 
-/* Mobile: overlay sempre visível e sem pointer-events, exceto no vídeo */
+/* Mobile: overlay some quando vídeo está tocando */
 @media (max-width: 768px) {
   .gallery-item .overlay {
-    pointer-events: auto; /* deixar interativo para os vídeos */
-    opacity: 1;
-    padding: 1rem;
+    transition: opacity 0.3s ease;
   }
 
-  .gallery-item img.zoomed + .overlay {
+  /* Esconde overlay quando vídeo está tocando */
+  .gallery-video[playing] + .overlay,
+  .gallery-video:not([paused]) + .overlay {
     opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Mostra overlay quando vídeo está pausado */
+  .gallery-video[paused] + .overlay {
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
 
   .projects, .about, .contact {
@@ -392,8 +399,8 @@ html {
   .menu-toggle {
     display: flex;
   }
-}
-  /* Adiciona overlay quando menu está aberto */
+
+  /* Overlay do menu */
   .navbar::after {
     content: '';
     position: fixed;
@@ -412,6 +419,7 @@ html {
     opacity: 1;
     pointer-events: auto;
   }
+}
 
 /* Animação do fundo */
 @keyframes modernGradient {
@@ -419,20 +427,6 @@ html {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-
-@media (max-width: 768px) {
-  .gallery-video:not([paused]) + .overlay {
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
-  
-  .gallery-video[paused] + .overlay,
-  .gallery-video:not([playing]) + .overlay {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
-}
-
 
 /* === Modal para imagem em destaque === */
 

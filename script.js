@@ -188,4 +188,67 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+  // Controle dos vídeos - MOBILE FIRST
+document.querySelectorAll('.gallery-video').forEach(video => {
+  video.volume = 0.05;
+  const container = video.closest('.gallery-item');
+  const overlay = container?.querySelector('.overlay');
+
+  if (!overlay) return;
+
+// Controle dos vídeos no mobile
+document.querySelectorAll('.gallery-video').forEach(video => {
+  // Atualiza atributos de estado
+  video.addEventListener('play', () => {
+    video.setAttribute('playing', '');
+    video.removeAttribute('paused');
+  });
+  
+  video.addEventListener('pause', () => {
+    video.removeAttribute('playing');
+    video.setAttribute('paused', '');
+  });
+  
+  video.addEventListener('ended', () => {
+    video.removeAttribute('playing');
+    video.setAttribute('paused', '');
+  });
+
+  // Esconde overlay imediatamente ao tocar no mobile
+  video.addEventListener('touchstart', () => {
+    if (window.innerWidth <= 768) {
+      const overlay = video.closest('.gallery-item')?.querySelector('.overlay');
+      if (overlay) {
+        overlay.style.opacity = '0';
+        overlay.style.pointerEvents = 'none';
+      }
+    }
+  });
+});
+
+  // Controle por estado do vídeo
+  video.addEventListener('play', () => {
+    overlay.style.opacity = '0';
+    overlay.style.pointerEvents = 'none';
+  });
+
+  video.addEventListener('pause', () => {
+    overlay.style.opacity = '1';
+    overlay.style.pointerEvents = 'auto';
+  });
+
+  video.addEventListener('ended', () => {
+    overlay.style.opacity = '1';
+    overlay.style.pointerEvents = 'auto';
+  });
+
+  // Pausa outros vídeos quando um começa
+  video.addEventListener('play', () => {
+    document.querySelectorAll('.gallery-video').forEach(v => {
+      if (v !== video && !v.paused) {
+        v.pause();
+      }
+    });
+  });
+  });
 });
