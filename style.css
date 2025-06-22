@@ -394,6 +394,8 @@ html {
 
 .nav-links.active {
   transform: translateX(0) translateY(23px);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 
