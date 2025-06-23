@@ -378,10 +378,10 @@ html {
   position: fixed;
   top: 0;
   right: 0;
-  width: 40vw;
-  max-width: 200px;
-  height: 40vh;
-  background-color: #111;
+  width: 35vw;
+  max-width: 150px;
+  height: 33vh;
+  background-color: #000000;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -390,6 +390,8 @@ html {
   transform: translateX(100%) translateY(23px);
   transition: transform 0.3s ease-in-out;
   z-index: 1050;
+  outline: 1px solid #ffffff; /* cor e espessura do contorno */
+  outline-offset: 0px; /* opcional: ajuste de distância da outline */
 }
 
 .nav-links.active {
@@ -397,8 +399,6 @@ html {
   opacity: 1;
   pointer-events: auto;
 }
-
-
 
 
   /* Esconde nav-links no mobile por padrão */
