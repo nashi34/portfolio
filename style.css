@@ -196,6 +196,13 @@ html {
   scroll-behavior: smooth;
 }
 
+.logo {
+  text-decoration: none;   /* Remove o sublinhado */
+  color: inherit;          /* cor específica */
+  font-weight: bold;       /* Mantém o destaque */
+}
+
+
 /* Galeria de Projetos */
 .gallery-container {
   display: grid;
