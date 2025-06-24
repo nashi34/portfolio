@@ -73,14 +73,14 @@ header {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 3rem;
 }
 
 .nav-links a {
   color: var(--secondary-color);
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
+  font-weight: 600;
+  transition: color 0.5s;
 }
 
 .nav-links a:hover {
@@ -127,7 +127,7 @@ header {
 }
 
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
   color: #ffffff; 
 }
@@ -139,7 +139,7 @@ header {
   font-family: 'Urbanist', sans-serif;
 }
 
-.projects h2, .about h2, .contact h2 {
+.projects h2, .about h2, .contact h2  {
   font-size: 3rem;
   margin-bottom: 2rem;
   text-align: center;
@@ -342,6 +342,51 @@ html {
   display: none;
 }
 
+.skills-section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.skills-section h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: #ffffff; 
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
+  gap: 80px;
+  max-width: 1350px;
+  margin: 0 auto;
+}
+
+.skill-card {
+  border: 2px solid #ffffff38;
+  border-radius: 16px;
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgb(0, 0, 0);
+}
+
+.skill-card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 15px;
+}
+
+.skill-card p {
+  margin: 0;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+
 /* Responsividade */
 
 /* Desktop médio/grande */
@@ -384,29 +429,29 @@ html {
   /* Esconde links e mostra botão hambúrguer */
 .nav-links {
   position: fixed;
-  top: 25;
+  top: 30;
   right: 0;
   width: 35vw;
   max-width: 150px;
-  height: 33vh;
+  height: 40vh;
   background-color: #000000;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   padding: 2rem 1.5rem;
 
   transform: translateX(100%) translateY(23px);
   transition: transform 0.3s ease-in-out;
   z-index: 1050;
-  outline: 1px solid #ffffff; 
-  border: 2px solid #fff; 
-  border-radius: 5px;      
+  border: 1.7px solid #fff; 
+  border-radius: 1px;      
 }
 
 .nav-links.active {
   transform: translateX(0) translateY(23px);
   opacity: 1;
   pointer-events: auto;
+  gap: 1rem;
 }
 
 
