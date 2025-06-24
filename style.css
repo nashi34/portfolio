@@ -16,9 +16,9 @@
 
 body {
   font-family: var(--font);
-  background: linear-gradient(270deg, #1f0229, #17182e, #14032a, #2e3441);
+  background: linear-gradient(270deg, #1a1a2e, #16213e, #0f3460, #53354a);
   background-size: 800% 800%;
-  animation: gradientAnimation 20s ease infinite;
+  animation: gradientAnimation 20s linear infinite;
   color: var(--primary-color);
   line-height: 1.6;
   padding-top: 60px;
@@ -219,6 +219,7 @@ html {
   max-width: 1000px;
   gap: 2rem 3rem;
   padding: 1rem;
+  margin-bottom: 43rem; /* aumenta o espaço abaixo */
 }
 
 
@@ -255,6 +256,7 @@ html {
 
 .overlay {
   position: absolute;
+  pointer-events: none;
   bottom: 0;
   left: 0;
   right: 0;
@@ -270,6 +272,7 @@ html {
 }
 
 .overlay h3 {
+  text-align: center;
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
 }
@@ -297,6 +300,7 @@ html {
 .tags span {
   background-color: #0051ff !important;
   color: white !important;
+  margin: 0 auto;  
 }
 
 /* Lightbox/Modal */
