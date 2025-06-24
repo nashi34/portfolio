@@ -52,6 +52,29 @@
       padding-top: 100%; /* mantém o quadrado */
       margin: 0 auto; /* centraliza se necessário */
     }
+
+    .play-button {
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       font-size: 48px;
+       background: rgba(0, 0, 0, 0.5);
+       color: rgb(255, 255, 255);
+       border: none;
+       border-radius: 50%;
+       width: 80px;
+       height: 80px;
+       cursor: pointer;z-index: 10; /* muito importante */
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       transition: background 0.3s ease;
+    }
+
+    .play-button:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
     
     /* Estilo ajustado para o vídeo vertical */
     .gallery-video {
@@ -267,6 +290,7 @@
           <source src="Final_Render_1.mp4" type="video/mp4">
           O teu navegador não suporta vídeos HTML5.
         </video>
+        <button class="play-button" onclick="tocarVideo(this)">▶</button>
         <div class="overlay">
           <h3>Onboarding do Projeto Final</h3>
           <p>Vídeo demonstrativo do meu projeto de conclusão</p>
@@ -303,6 +327,7 @@
       <source src="logo_com_som_final.mp4" type="video/mp4">
       O teu navegador não suporta vídeos HTML5.
     </video>
+    <button class="play-button" onclick="tocarVideo(this)">▶</button>
     <div class="overlay">
       <h3>Logo Animado TW</h3>
       <p>Animação do logótipo com som, usada em apresentações da equipa.</p>
@@ -339,6 +364,7 @@
           <source src="ad_mobile_projeto.mp4" type="video/mp4">
           O teu navegador não suporta vídeos HTML5.
         </video>
+        <button class="play-button" onclick="tocarVideo(this)">▶</button>
         <div class="overlay">
           <h3>Projeto Mobile Ad</h3>
           <p>Vídeo vertical publicitário para redes sociais.</p>
@@ -448,6 +474,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+<script>
+  function tocarVideo(button) {
+    const video = button.previousElementSibling;
+    video.play();
+    button.style.display = "none";
+  }
+</script>
+
 <script src="script.js"></script>
 <link rel="stylesheet" href="style.css">
 </body>

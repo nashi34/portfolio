@@ -231,7 +231,7 @@ html {
   aspect-ratio: 16/9;
   height: 100%; /* Garante altura consistente */
   width: 100%;
-  background-color: #390d5786;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;

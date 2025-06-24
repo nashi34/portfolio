@@ -66,16 +66,27 @@ function setupGalleryLightbox() {
   });
 }
 
-function setupVideoControls() {
-  document.querySelectorAll('.gallery-video').forEach(video => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting && !video.paused) {
-          video.pause();
-        }
-      });
-    }, { threshold: 0.1 });
-    observer.observe(video);
+function setupVideoPlayButton() {
+  document.querySelectorAll('.video-container').forEach(container => {
+    const video = container.querySelector('video');
+    const playButton = container.querySelector('.play-button');
+
+    if (!video || !playButton) return;
+
+    // Clique no botão play
+    playButton.addEventListener('click', e => {
+      e.stopPropagation();  // impede clique passar para o vídeo
+      video.play();
+      playButton.style.display = 'none';
+    });
+
+    // Clique direto no vídeo
+    video.addEventListener('click', () => {
+      video.play();
+      if (playButton.style.display !== 'none') {
+        playButton.style.display = 'none';
+      }
+    });
   });
 }
 
@@ -128,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupGalleryLightbox();
   setupVideoControls();
   setupSmoothScroll();
+  setupVideoPlayButton();
 
   // Definir volume inicial de vídeo logo apenas ao tocar
   document.querySelectorAll('.logo-video').forEach(video => {
@@ -147,5 +159,32 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.classList.toggle('active'); // ou 'open', conforme seu CSS
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.video-container').forEach(container => {
+    const video = container.querySelector('video');
+    const button = container.querySelector('.play-button');
+
+    if (!video || !button) return;
+
+    button.addEventListener('click', () => {
+      video.play();
+      button.style.display = 'none';
+    });
+
+    video.addEventListener('play', () => {
+      button.style.display = 'none';
+    });
+
+    video.addEventListener('pause', () => {
+      button.style.display = 'flex';
+    });
+
+    video.addEventListener('ended', () => {
+      button.style.display = 'flex';
+    });
+  });
+});
+
 
 
