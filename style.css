@@ -337,7 +337,7 @@ html {
   object-fit: cover;
 }
 
-/* Remove a seção de vídeo separada se quiser */
+/* Remove a secção de vídeo separada */
 .video-section {
   display: none;
 }
