@@ -46,7 +46,9 @@
       position: relative;
       width: 100%;
       padding-top: 177.78%; /* Proporção 9:16 para vídeo vertical */
-      background-color: #0e0bd3;
+      max-width: 500px; /* aumenta o tamanho */
+      padding-top: 100%; /* mantém o quadrado */
+      margin: 0 auto; /* centraliza se necessário */
     }
     
     /* Estilo ajustado para o vídeo vertical */
@@ -117,16 +119,13 @@
     }
     /* Esconde o menu-toggle no desktop */
 .menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
+  display: none; 
 }
 
 .menu-toggle span {
   width: 25px;
   height: 3px;
-  background: var(--secondary-color, #0099ff); /* Usa a cor que você quiser */
+  background: var(--secondary-color, #1900ff); /* Usa a cor que você quiser */
   border-radius: 2px;
 }
 
@@ -170,10 +169,17 @@
   
   .nav-links li a {
     display: block;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0rem;
     color: white;
   }
 }
+    a {
+      color: #00ffaa;
+    }
+
+    a:hover {
+      color: #ffffff;
+    }
   </style>
   <link rel="icon" href="icon.png" type="image/png" />
 </head>
@@ -398,5 +404,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 <script src="script.js"></script>
+<link rel="stylesheet" href="style.css">
 </body>
 </html>

@@ -4,7 +4,7 @@
 :root {
   --primary-color: rgb(0, 0, 0);
   --secondary-color: #ffffff;
-  --accent-color: #0011ff;
+  --accent-color: #0044ff;
   --font: 'Inter', sans-serif;
 }
 
@@ -208,6 +208,13 @@ html {
   background-color: #580d4b00;
 }
 
+#projetos.projects {
+  max-width: 1000px;
+  gap: 2rem 3rem;
+  padding: 1rem;
+}
+
+
 .gallery-item {
   border-radius: 10px;
   overflow: hidden;
@@ -223,6 +230,7 @@ html {
 .image-container {
   aspect-ratio: 16/9;
   height: 100%; /* Garante altura consistente */
+  width: 100%;
   background-color: #390d5786;
   display: flex;
   justify-content: center;
@@ -280,7 +288,7 @@ html {
 }
 
 .tags span {
-  background-color: #0011ff !important;
+  background-color: #0051ff !important;
   color: white !important;
 }
 
@@ -376,7 +384,7 @@ html {
   /* Esconde links e mostra botão hambúrguer */
 .nav-links {
   position: fixed;
-  top: 0;
+  top: 25;
   right: 0;
   width: 35vw;
   max-width: 150px;
@@ -390,8 +398,9 @@ html {
   transform: translateX(100%) translateY(23px);
   transition: transform 0.3s ease-in-out;
   z-index: 1050;
-  outline: 1px solid #ffffff; /* cor e espessura do contorno */
-  outline-offset: 0px; /* opcional: ajuste de distância da outline */
+  outline: 1px solid #ffffff; 
+  border: 2px solid #fff; 
+  border-radius: 5px;      
 }
 
 .nav-links.active {
@@ -436,4 +445,14 @@ html {
     padding-top: 0;
   }
 }
+/* Esconde o botão de menu no desktop */
+.menu-toggle {
+  display: none;
+}
 
+/* Mostra o botão de menu em telas pequenas (mobile) */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+}
