@@ -142,16 +142,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (/android/i.test(userAgent)) {
     if (screenWidth <= 768) {
-      volume = 0.4; // tlmvl Android
+      volume = 0.6; // tlmvl Android
     } else {
-      volume = 0.25; // tablet Android
+      volume = 0.5; // tablet Android
     }
   } else if (/iPad|Tablet/i.test(userAgent)) {
-    volume = 0.25; // iPad ou tablets em geral
+    volume = 0.5; // iPad ou tablets em geral
   } else if (/iPhone/i.test(userAgent)) {
-    volume = 0.4; // iPhone
+    volume = 0.6; // iPhone
   } else if (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) {
-    volume = 0.25; // iPad com iPadOS detectado como Mac
+    volume = 0.5; // iPad com iPadOS detectado como Mac
   }
 
   document.querySelectorAll('.logo-video').forEach(function (video) {
