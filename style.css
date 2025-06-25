@@ -18,7 +18,7 @@ body {
   font-family: var(--font);
   background: linear-gradient(270deg, #1a1a2e, #16213e, #0f3460, #53354a);
   background-size: 800% 800%;
-  animation: gradientAnimation 20s linear infinite;
+  animation: gradientAnimation 17s linear infinite;
   color: var(--primary-color);
   line-height: 1.6;
   padding-top: 60px;
@@ -471,7 +471,7 @@ html {
     font-size: 1.2rem;
   }
 
-  /* Botão hambúrguer */
+  /* Botão menu hambúrguer */
   .menu-toggle {
     display: flex;
   }
@@ -510,5 +510,11 @@ html {
 @media (max-width: 768px) {
   .menu-toggle {
     display: flex;
+  }
+}
+
+@media (max-width: 768px) {
+  #projetos.projects {
+    margin-bottom: 5rem; /* espaço menor no mobile */
   }
 }

@@ -132,24 +132,34 @@ function smoothScrollTo(targetElement) {
   requestAnimationFrame(animation);
 }
 
-// Inicialização
-document.addEventListener('DOMContentLoaded', () => {
-  setupIntersectionObservers();
-  setupNavbarScrollEffect();
-  setupGalleryLightbox();
-  setupVideoControls();
-  setupSmoothScroll();
-  setupVideoPlayButton();
+// Inicialização dos - videos - sons
+document.addEventListener('DOMContentLoaded', function () {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  const screenWidth = window.innerWidth;
 
-  // Definir volume inicial de vídeo logo apenas ao tocar
-  document.querySelectorAll('.logo-video').forEach(video => {
-    video.addEventListener('play', () => {
-      if (video.volume > 0.1) {
-        video.volume = 0.1;
-      }
+  let volume = 0.1; // valor padrão para desktop
+
+  if (/android/i.test(userAgent)) {
+    if (screenWidth <= 768) {
+      volume = 0.4; // tlmvl Android
+    } else {
+      volume = 0.25; // tablet Android
+    }
+  } else if (/iPad|Tablet/i.test(userAgent)) {
+    volume = 0.25; // iPad ou tablets em geral
+  } else if (/iPhone/i.test(userAgent)) {
+    volume = 0.4; // iPhone
+  } else if (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) {
+    volume = 0.25; // iPad com iPadOS detectado como Mac
+  }
+
+  document.querySelectorAll('.logo-video').forEach(function (video) {
+    video.addEventListener('play', function () {
+      video.volume = volume;
     }, { once: true });
   });
 });
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.querySelector('.menu-toggle');
@@ -159,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.classList.toggle('active'); // ou 'open', conforme seu CSS
   });
 });
+
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.video-container').forEach(container => {
@@ -185,6 +196,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
-
-
