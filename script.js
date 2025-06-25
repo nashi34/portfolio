@@ -134,6 +134,7 @@ function smoothScrollTo(targetElement) {
 
 // Inicialização dos - videos - sons
 document.addEventListener('DOMContentLoaded', function () {
+  setupGalleryLightbox();
   const userAgent = navigator.userAgent || navigator.vendor || window.opera;
   const screenWidth = window.innerWidth;
 
