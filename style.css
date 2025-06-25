@@ -290,12 +290,12 @@ html {
 
 .overlay p {
   font-size: 0.7rem; /* texto menor */
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
   text-align: center;
 }
 
 .tags span {
-  font-size: 0.70rem; /* tags menores */
+  font-size: 0.60rem; /* tags menores */
   padding: 0.15rem 0.4rem;
   text-align: center;
 }
@@ -365,7 +365,7 @@ html {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   justify-content: center; /* <-- centraliza todos os blocos */
   gap: 90px;
   max-width: 1000px;
