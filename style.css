@@ -391,7 +391,7 @@ html {
 
 .skill-card {
   border: 2px solid #ffffff7e;
-  border-radius: 16px;
+  border-radius: 100px;
   padding: 30px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -399,7 +399,7 @@ html {
 
 .skill-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgb(0, 0, 0);
+  box-shadow: 0 4px 12px rgb(255, 255, 255);
 }
 
 .skill-card img {
@@ -595,5 +595,159 @@ html {
     height: auto;
     object-fit: cover;
     display: block;
+  }
+}
+
+#sound-toggle {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#sound-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+#sound-toggle.playing {
+  background: rgba(255, 255, 255, 0.181); /* muda cor quando está tocando */
+}
+
+/* Mobile: ligeiramente menor */
+@media (max-width: 768px) {
+  #sound-toggle {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+    bottom: 14px;
+    right: 14px;
+  }
+}
+
+
+/* =================== */
+/* FUNDO ESTRELADO */
+/* ====================*/
+
+.space-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1; /* fica atrás de todo o conteúdo */
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Camada principal de estrelas (densidade alta) */
+.space-bg .stars {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  background: white;
+  box-shadow:
+    1vw 2vh 1px white, 3vw 8vh 2px white, 5vw 15vh 1px white,
+    7vw 22vh 2px white, 9vw 30vh 1px white, 11vw 5vh 2px white,
+    13vw 18vh 1px white, 15vw 28vh 2px white, 17vw 35vh 1px white,
+    19vw 12vh 2px white, 21vw 42vh 1px white, 23vw 25vh 2px white,
+    25vw 50vh 1px white, 27vw 8vh 2px white, 29vw 33vh 1px white,
+    31vw 60vh 2px white, 33vw 15vh 1px white, 35vw 70vh 2px white,
+    37vw 45vh 1px white, 39vw 80vh 2px white,
+    41vw 10vh 1px white, 43vw 55vh 2px white, 45vw 20vh 1px white,
+    47vw 65vh 2px white, 49vw 35vh 1px white,
+    51vw 75vh 2px white, 53vw 15vh 1px white,
+    55vw 85vh 2px white, 57vw 45vh 1px white, 
+    59vw 95vh 2px white;
+  animation: twinkle 3s infinite linear;
+}
+
+/* Segunda camada (mais fraca, mais espalhada) */
+.space-bg .stars::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow:
+    4vw 10vh 2px white, 8vw 25vh 1px white, 12vw 40vh 2px white,
+    16vw 55vh 1px white, 20vw 70vh 2px white,
+    24vw 85vh 1px white, 28vw 35vh 2px white,
+    32vw 15vh 1px white, 36vw 60vh 2px white,
+    40vw 90vh 1px white, 44vw 45vh 2px white,
+    48vw 20vh 1px white, 52vw 75vh 2px white,
+    56vw 35vh 1px white, 60vw 85vh 2px white,
+    64vw 50vh 1px white, 68vw 10vh 2px white,
+    72vw 65vh 1px white, 76vw 30vh 2px white,
+    80vw 90vh 1px white;
+  animation: twinkle 2s infinite linear reverse;
+}
+
+
+/* Estrelas cadentes */
+.space-bg .shooting-star {
+  position: absolute;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(270deg, white, transparent);
+  opacity: 0;
+  animation: shoot 4s infinite ease-in;
+}
+
+.space-bg .shooting-star:nth-child(2) {
+  top: 15%;
+  left: -150px;
+  animation-delay: 0s;
+}
+
+.space-bg .shooting-star:nth-child(3) {
+  top: 30%;
+  left: -150px;
+  animation-delay: 1.5s;
+}
+
+.space-bg .shooting-star:nth-child(4) {
+  top: 55%;
+  left: -150px;
+  animation-delay: 3s;
+}
+
+.space-bg .shooting-star:nth-child(5) {
+  top: 70%;
+  left: -150px;
+  animation-delay: 4s;
+}
+
+/* Estrelas profundas (menores e mais lentas) */
+.space-bg .stars-deep {
+  opacity: 0.5;
+  transform: scale(1.8);
+  animation-duration: 12s;
+}
+
+/* Animações */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes shoot {
+  0% {
+    transform: translateX(0) translateY(0) rotate(25deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(130vw) translateY(60vh) rotate(25deg);
+    opacity: 0;
   }
 }

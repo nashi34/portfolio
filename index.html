@@ -216,6 +216,16 @@
   <link rel="icon" href="icon.png" type="image/png" />
 </head>
 <body>
+
+  <div class="space-bg">
+    <div class="stars"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="stars stars-deep"></div>
+  </div>
+
   <header>
   <nav class="navbar">
     <a href="#home" class="logo">Portfólio</a>
@@ -258,8 +268,8 @@
       <p>Web Design</p>
     </div>
     <div class="skill-card">
-      <img src="blender.png" alt="Blender">
-      <p>Blender</p>
+      <img src="php.png" alt="PHP">
+      <p>PHP</p>
     </div>
     <div class="skill-card">
       <img src="python.png" alt="Python">
@@ -404,8 +414,6 @@
     </a>
   </div>
 </div>
-
-
   </div>
 </section>
 
@@ -511,6 +519,37 @@ document.addEventListener('DOMContentLoaded', () => {
     video.play();
     button.style.display = "none";
   }
+</script>
+
+<!-- Botão de som -->
+<button id="sound-toggle" aria-label="Toggle sound" title="Toggle sound">🔇</button>
+
+<!-- Áudio de fundo -->
+<audio id="bg-music" loop preload="auto">
+  <source src="4AM_mishoangelo.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio.
+</audio>
+
+<script>
+  const toggleBtn = document.getElementById('sound-toggle');
+  const audio = document.getElementById('bg-music');
+
+  toggleBtn.addEventListener('click', async () => {
+    try {
+      if (audio.paused) {
+        await audio.play();
+        toggleBtn.classList.add('playing');
+        toggleBtn.textContent = '🔊';
+        audio.volume = 0.30;
+      } else {
+        audio.pause();
+        toggleBtn.classList.remove('playing');
+        toggleBtn.textContent = '🔇';
+      }
+    } catch (err) {
+      console.log("Erro ao tocar áudio:", err);
+    }
+  });
 </script>
 
 <script src="script.js"></script>
