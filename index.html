@@ -6,7 +6,7 @@
   <title>Portfólio | David Lopes</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Estilos de animação */
+    /* Estilos da animação */
     .fade-in {
       opacity: 1 !important;
       transform: translateY(0) scale(1.30) !important;
@@ -14,7 +14,7 @@
       transition: opacity 1s ease-out, transform 1s ease-out;
     }
     
-    /* Seções inicialmente invisíveis */
+    /* Secções inicialmente invisíveis */
     .projects, .about, .contact {
       p {text-align: center;}
       opacity: 0;
@@ -179,7 +179,7 @@
     flex-direction: column;
     background-color: var(--primary-color, #222);
     position: absolute;
-    top: 60px; /* ajuste conforme altura da navbar */
+    top: 60px; /* ajusta conforme a altura da navbar */
     right: 0;
     width: 100%;
     padding: 1rem 0;
@@ -187,7 +187,7 @@
     border-top: 1px solid #444;
   }
   
-  /* Mostrar o menu quando ativo */
+  /* Mostra o menu quando ativo */
   .nav-links.active {
     display: flex;
   }
@@ -246,7 +246,7 @@
   <section id="home" class="hero">
     <div class="hero-content">
       <h1>Sobre Mim</h1>
-      <p>Chamo-me David Lopes, sou estudante de Engenharia de Multimédia no ISTEC, com forte interesse em Front-End Development, UI Design e Web Design.</p>
+      <p>Chamo-me David Lopes, sou licenciado em Engenharia de Multimédia, com forte interesse em Front-End Development, UI Design e Web Design.</p>
         <p>Procuro crescer profissionalmente em projetos criativos e tecnológicos que combinem design, funcionalidade e experiência do utilizador.</p>
     </div>
   </section>
@@ -299,7 +299,7 @@
   <p>(Clica em cada projeto para ampliar)</p>
   <p style="margin-bottom: 50px;"></p>
 
-  <!-- ADICIONADO: layout em 2 colunas -->
+  <!-- layout em 2 colunas -->
   <div class="projects-layout">
 
     <!-- COLUNA ESQUERDA -->
@@ -456,7 +456,7 @@
         observer.observe(section);
       });
 
-      // Efeito de scroll na navbar
+      // Efeito do scroll na navbar
       window.addEventListener('scroll', function() {
         const navbar = document.querySelector('.navbar');
         if (window.scrollY > 10) {
@@ -466,7 +466,7 @@
         }
       });
 
-      // Controle de vídeos na galeria
+      // Controlo de vídeos na galeria
       const videos = document.querySelectorAll('.gallery-video');
       videos.forEach(function(video) {
         // Pausa vídeos quando outro é reproduzido
@@ -499,7 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const videos = document.querySelectorAll('video');
 
   videos.forEach(video => {
-    // Sempre inicia com volume em 5%
+    // Sempre inicia videos com volume a 5%
     video.volume = 0.05;
 
     video.addEventListener('play', () => {
@@ -509,7 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (overlay) {
         overlay.style.opacity = '0';
 
-        // Opcional: esconde do fluxo após a transição
+        // esconde o fluxo após a transição
         setTimeout(() => {
           overlay.style.display = 'none';
         }, 300);

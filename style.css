@@ -216,7 +216,7 @@ html {
 }
 
 #projetos.projects {
-  max-width: 1000px;
+  max-width: 1075px;
   gap: 2rem 3rem;
   padding: 1rem;
   margin-bottom: 43rem; /* aumenta o espaço abaixo */
@@ -251,7 +251,7 @@ html {
 
 /* Zoom suave no hover */
 .gallery-item:hover img {
-  transform: scale(1.05);
+  transform: scale(1.10);
 }
 
 /* Overlay com gradiente suave */
@@ -355,13 +355,13 @@ html {
   background-color: #3a0a0ab7;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
   display: block;
   border-radius: 6px;
 }
 
 .gallery-video.logo-video {
-  object-fit: cover;
+  object-fit: fill;
 }
 
 /* Remove a secção de vídeo separada */
@@ -415,7 +415,9 @@ html {
 }
 
 
+/*///////////////////////
 /* Responsividade */
+/*///////////////////////
 
 /* Desktop médio/grande */
 @media (min-width: 768px) {
@@ -508,7 +510,7 @@ html {
     display: flex;
   }
 }
-/* Mobile: navbar está estática (default) */
+/* Mobile: navbar estática (default) */
 .navbar {
   position: flex;
 }
@@ -623,7 +625,7 @@ html {
 }
 
 #sound-toggle.playing {
-  background: rgba(255, 255, 255, 0.181); /* muda cor quando está tocando */
+  background: rgba(255, 255, 255, 0.181); /* muda a cor quando está a tocar */
 }
 
 /* Mobile: ligeiramente menor */
@@ -663,14 +665,14 @@ html {
 }
 
 
-/* =================== */
-/* FUNDO ESTRELADO */
-/* ====================*/
+/* ========================== */
+/* BACKGROUND COM ESTRELAS */
+/* ==========================*/
 
 .space-bg {
   position: fixed;
   inset: 0;
-  z-index: -1; /* fica atrás de todo o conteúdo */
+  z-index: -1; /* fica atrás do conteúdo */
   overflow: hidden;
   pointer-events: none;
 }
