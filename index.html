@@ -152,7 +152,7 @@
 .menu-toggle span {
   width: 25px;
   height: 3px;
-  background: var(--secondary-color, #1900ff); /* Usa a cor que você quiser */
+  background: var(--secondary-color, #1900ff);
   border-radius: 2px;
 }
 
@@ -205,11 +205,11 @@
   }
 }
     a {
-      color: #00ffaa;
+      color: #ffffff;
     }
 
     a:hover {
-      color: #ffffff;
+      color: cyan;
     }
 
   </style>
@@ -293,131 +293,136 @@
 
 
 
-<!-- ... (cabeçalho igual) -->
-
+<!-- ===== PROJETOS ===== -->
 <section id="projetos" class="projects">
   <h2>Os meus projetos</h2>
   <p>(Clica em cada projeto para ampliar)</p>
-  <p style="margin-bottom: 25px;"></p>
-  <div class="gallery-container">
+  <p style="margin-bottom: 50px;"></p>
 
-    <!-- Projeto Final -->
-    <div class="gallery-item">
-      <div class="video-container">
-        <video class="gallery-video" controls>
-          <source src="Final_Render_1.mp4" type="video/mp4">
-          O teu navegador não suporta vídeos HTML5.
-        </video>
-        <button class="play-button" onclick="tocarVideo(this)">▶</button>
-        <div class="overlay">
-          <h3>Onboarding do Projeto Final</h3>
-          <p>Vídeo demonstrativo do meu projeto de conclusão</p>
-          <div class="tags">
-            <span>Multimédia</span>
-            <span>UI/UX</span>
-            <span>Vídeo</span>
+  <!-- ADICIONADO: layout em 2 colunas -->
+  <div class="projects-layout">
+
+    <!-- COLUNA ESQUERDA -->
+    <div class="projects-left">
+
+      <!-- Projeto 1 -->
+      <div class="gallery-item">
+        <div class="video-container">
+          <video class="gallery-video" controls>
+            <source src="Final_Render_1.mp4" type="video/mp4">
+          </video>
+          <button class="play-button" onclick="tocarVideo(this)">▶</button>
+          <div class="overlay">
+            <h3>Onboarding do Projeto Final</h3>
+            <p>Vídeo demonstrativo do meu projeto de conclusão</p>
+            <div class="tags">
+              <span>Multimédia</span>
+              <span>UI/UX</span>
+              <span>Vídeo</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Imagem: Banner -->
-<div class="gallery-item">
-  <div class="image-container">
-    <img src="ad_logo.png" alt="Banner TW" />
-    <div class="overlay">
-      <h3>Banner Promocional TW</h3>
-      <p>Design gráfico com tipografia criativa para promoção digital.</p>
-      <div class="tags">
-        <span>Photoshop</span>
-        <span>Design</span>
-        <span>Identidade Visual</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- Vídeo: Logo com som (vertical fix) -->
-<div class="gallery-item">
-  <div class="video-container">
-    <video class="gallery-video" controls>
-      <source src="logo_com_som_final.mp4" type="video/mp4">
-      O teu navegador não suporta vídeos HTML5.
-    </video>
-    <button class="play-button" onclick="tocarVideo(this)">▶</button>
-    <div class="overlay">
-      <h3>Logo Animado TW</h3>
-      <p>Animação do logótipo com som, usada em apresentações da equipa.</p>
-      <div class="tags">
-        <span>After Effects</span>
-        <span>Áudio</span>
-        <span>Branding</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-    <!-- Imagem: Cubo Rubik -->
-<div class="gallery-item">
-  <div class="image-container">
-    <img src="cubo_rubik.jpg" alt="Cubo Rubik 3D" />
-    <div class="overlay">
-      <h3>Cubo Rubik 3D</h3>
-      <p>Render 3D com iluminação e materiais realistas.</p>
-      <div class="tags">
-        <span>3D</span>
-        <span>Render</span>
-        <span>Blender</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-    <!-- Vídeo: Ad Mobile Projeto -->
-    <div class="gallery-item">
-      <div class="video-container">
-        <video class="gallery-video" controls>
-          <source src="ad_mobile_projeto.mp4" type="video/mp4">
-          O teu navegador não suporta vídeos HTML5.
-        </video>
-        <button class="play-button" onclick="tocarVideo(this)">▶</button>
-        <div class="overlay">
-          <h3>Projeto Mobile Ad</h3>
-          <p>Vídeo vertical publicitário para redes sociais.</p>
-          <div class="tags">
-            <span>Vídeo</span>
-            <span>Mobile</span>
-            <span>Promo</span>
+      <!-- Projeto 2 -->
+      <div class="gallery-item">
+        <div class="image-container">
+          <img src="ad_logo.png" alt="Banner TW" />
+          <div class="overlay">
+            <h3>Banner Promocional TW</h3>
+            <p>Design gráfico com tipografia criativa.</p>
+            <div class="tags">
+              <span>Photoshop</span>
+              <span>Design</span>
+              <span>Identidade Visual</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-
-    <div class="gallery-item">
-  <div class="image-container">
-    <a href="Brand_Book.pdf" target="_blank" rel="noopener noreferrer">
-      <img src="brandbook.png" alt="Documento PDF" />
-      <div class="overlay">
-        <h3>Relatório Técnico</h3>
-        <p>PDF com análise e documentação detalhada.</p>
-        <div class="tags">
-          <span>PDF</span>
-          <span>Relatório</span>
-          <span>Documentação</span>
+      <!-- Projeto 3 -->
+      <div class="gallery-item">
+        <div class="video-container">
+          <video class="gallery-video" controls>
+            <source src="logo_com_som_final.mp4" type="video/mp4">
+          </video>
+          <button class="play-button" onclick="tocarVideo(this)">▶</button>
+          <div class="overlay">
+            <h3>Logo Animado TW</h3>
+            <p>Animação do logótipo com som.</p>
+            <div class="tags">
+              <span>After Effects</span>
+              <span>Áudio</span>
+              <span>Branding</span>
+            </div>
+          </div>
         </div>
       </div>
-    </a>
-  </div>
-</div>
+
+    </div>
+
+    <!-- COLUNA DIREITA -->
+    <div class="projects-right">
+
+      <!-- Projeto 4 -->
+      <div class="gallery-item">
+        <div class="image-container">
+          <img src="cubo_rubik.jpg" alt="Cubo Rubik 3D" />
+          <div class="overlay">
+            <h3>Cubo Rubik 3D</h3>
+            <p>Render 3D com iluminação realista.</p>
+            <div class="tags">
+              <span>3D</span>
+              <span>Render</span>
+              <span>Blender</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projeto 5 -->
+      <div class="gallery-item">
+        <div class="video-container">
+          <video class="gallery-video" controls>
+            <source src="ad_mobile_projeto.mp4" type="video/mp4">
+          </video>
+          <button class="play-button" onclick="tocarVideo(this)">▶</button>
+          <div class="overlay">
+            <h3>Projeto Mobile Ad</h3>
+            <p>Vídeo publicitário vertical.</p>
+            <div class="tags">
+              <span>Vídeo</span>
+              <span>Mobile</span>
+              <span>Promo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projeto 6 -->
+      <div class="gallery-item">
+        <div class="image-container">
+          <a href="Brand_Book.pdf" target="_blank">
+            <img src="brandbook.png" alt="Brand Book PDF" />
+            <div class="overlay">
+              <h3>Relatório Técnico</h3>
+              <p>Documentação completa do projeto.</p>
+              <div class="tags">
+                <span>PDF</span>
+                <span>Relatório</span>
+                <span>Documentação</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </section>
 
-  <p style="margin-bottom: 75px;"></p>
+  <p style="margin-bottom: 50px;"></p>
   <section id="contacto" class="contact">
     <h2>Contactos</h2>
     <p><a href="mailto:davidjplopes@gmail.com">davidjplopes@gmail.com</a></p>
@@ -527,7 +532,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- Áudio de fundo -->
 <audio id="bg-music" loop preload="auto">
   <source src="4AM_mishoangelo.mp3" type="audio/mpeg">
-  Seu navegador não suporta áudio.
+  O teu navegador não suporta áudio.
 </audio>
 
 <script>

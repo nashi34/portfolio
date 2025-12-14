@@ -84,7 +84,7 @@ header {
 }
 
 .nav-links a:hover {
-  color: var(--accent-color);
+  color: cyan;
 }
 
 /* Botão hambúrguer - mobile */
@@ -237,7 +237,7 @@ html {
 .image-container {
   position: relative;
   overflow: hidden;
-  border-radius: inherit; /* herda os 12px do pai */
+  border-radius: inherit;
 }
 
 .image-container img {
@@ -245,7 +245,7 @@ html {
   width: 100%;
   height: auto;
   border-radius: inherit; /* garante cantos redondos */
-  object-fit: cover;
+  object-fit: fill;
   transition: transform 0.3s ease;
 }
 
@@ -384,8 +384,8 @@ html {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   justify-content: center; /* <-- centraliza todos os blocos */
-  gap: 90px;
-  max-width: 1000px;
+  gap: 130px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -634,6 +634,31 @@ html {
     font-size: 16px;
     bottom: 14px;
     right: 14px;
+  }
+}
+
+/* =============================== */
+/*       LAYOUT DOS PROJETOS */
+/* =============================== */
+
+.projects-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18rem;
+  align-items: center;
+}
+
+.projects-left,
+.projects-right {
+  display: flex;
+  flex-direction: column;
+  gap: 15rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .projects-layout {
+    grid-template-columns: 1fr;
   }
 }
 
