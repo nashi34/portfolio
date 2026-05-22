@@ -1,563 +1,235 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfólio | David Lopes</title>
+  <meta name="description" content="Portefólio de David Lopes, front-end developer, UI designer e engenheiro multimédia." data-i18n-attr="content:meta.description" />
+  <title data-i18n="meta.title">Portefólio | David Lopes</title>
+  <link rel="icon" href="files/icon.png" type="image/png" />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Estilos da animação */
-    .fade-in {
-      opacity: 1 !important;
-      transform: translateY(0) scale(1.30) !important;
-      transform-origin: top center;
-      transition: opacity 1s ease-out, transform 1s ease-out;
-    }
-    
-    /* Secções inicialmente invisíveis */
-    .projects, .about, .contact {
-      p {text-align: center;}
-      opacity: 0;
-      transform: translateY(30px);
-      color: #ffffff;
-    }
-    
-    /* Estilos para a galeria */
-    .gallery-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-      padding: 1rem;
-    }
-    
-    .gallery-item {
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: none;
-      background-color: transparent;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .gallery-item:hover {
-      transform: translateY(-5px);
-      box-shadow: none;
-    }
-    
-    /* Container especial para o vídeo vertical */
-    .video-container {
-      position: relative;
-      width: 100%;
-      padding-top: 177.78%; /* Proporção 9:16 para vídeo vertical */
-      max-width: 500px; /* aumenta o tamanho */
-      /*padding-top: 100%; c mantém o quadrado */
-      margin: 0 auto; /* centraliza se necessário */
-    }
-
-    .play-button {
-       position: absolute;
-       top: 45%;
-       left: 50%;
-       transform: translate(-50%, -50%);
-       font-size: 48px;
-       background: rgba(0, 0, 0, 0.5);
-       color: rgb(255, 255, 255);
-       border: none;
-       border-radius: 50%;
-       width: 80px;
-       height: 80px;
-       cursor: pointer;z-index: 10; /* muito importante */
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       transition: background 0.3s ease;
-    }
-
-    .play-button:hover {
-      background: rgba(0, 0, 0, 0.8);
-    }
-    
-    /* Estilo ajustado para o vídeo vertical */
-    .gallery-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-    
-    .overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-      color: white;
-      padding: 2rem 1.5rem 1.5rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
-    .gallery-item:hover .overlay {
-      opacity: 1;
-    }
-    
-    .overlay h3 {
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
-    
-    .overlay p {
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-    
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    
-    .tags span {
-      background-color: #0099ff;
-      color: white;
-      padding: 0.3rem 0.6rem;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      font-weight: 600;
-    }
-    
-    @media (max-width: 768px) {
-      .gallery-container {
-        grid-template-columns: 1fr;
-      }
-      
-      .overlay {
-        opacity: 1;
-        padding: 1rem;
-      }
-      
-      .video-container {
-        padding-top: 177.78%; /* Mantém a proporção em mobile */
-      }
-    }
-    /* Esconde o menu-toggle no desktop */
-.menu-toggle {
-  display: none; 
-}
-
-.menu-toggle span {
-  width: 25px;
-  height: 3px;
-  background: var(--secondary-color, #1900ff);
-  border-radius: 2px;
-}
-
-/* Navbar e nav-links */
-.nav-links {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-}
-
-@media (max-width: 768px) {
-  /* Mostrar o menu-toggle */
-  .menu-toggle {
-    display: flex;
-  }
-
-    .fade-in {
-    transform: translateY(0) scale(1) !important;
-  }    
-  
-  /* Esconde o menu padrão */
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: var(--primary-color, #222);
-    position: absolute;
-    top: 60px; /* ajusta conforme a altura da navbar */
-    right: 0;
-    width: 100%;
-    padding: 1rem 0;
-    margin: 0;
-    border-top: 1px solid #444;
-  }
-  
-  /* Mostra o menu quando ativo */
-  .nav-links.active {
-    display: flex;
-  }
-  
-  /* Ajustar links */
-  .nav-links li {
-    margin: 0.5rem 0;
-    text-align: center;
-  }
-  
-  .nav-links li a {
-    display: block;
-    padding: 0.5rem 0rem;
-    color: white;
-  }
-}
-    a {
-      color: #ffffff;
-    }
-
-    a:hover {
-      color: cyan;
-    }
-
-  </style>
-  <link rel="icon" href="icon.png" type="image/png" />
 </head>
 <body>
-
-  <div class="space-bg">
-    <div class="stars"></div>
-    <div class="shooting-star"></div>
-    <div class="shooting-star"></div>
-    <div class="shooting-star"></div>
-    <div class="shooting-star"></div>
-    <div class="stars stars-deep"></div>
-  </div>
-
-  <header>
-  <nav class="navbar">
-    <a href="#home" class="logo">Portfólio</a>
-    <div class="menu-toggle" aria-label="Menu de navegação" role="button" tabindex="0">
-      <span></span>
-      <span></span>
-      <span></span>
-</div>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Navegação principal" data-i18n-attr="aria-label:nav.aria">
+      <a href="#home" class="logo">David Lopes</a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" data-i18n-attr="aria-label:nav.menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <ul class="nav-links">
-        <li><a href="#home">Início</a></li>
-        <li><a href="#skills">Skillset</a></li>
-        <li><a href="#projetos">Projetos</a></li>
-        <li><a href="#contacto">Contactos</a></li>
+        <li><a href="#home" data-i18n="nav.home">Início</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projetos" data-i18n="nav.projects">Projetos</a></li>
+        <li><a href="#contacto" data-i18n="nav.contacts">Contactos</a></li>
       </ul>
+      <button class="language-toggle" type="button" aria-label="Switch to English" data-lang-toggle>
+        <span data-i18n="language.current">PT</span>
+        <span aria-hidden="true">/</span>
+        <span data-i18n="language.next">EN</span>
+      </button>
     </nav>
   </header>
 
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <h1>Sobre Mim</h1>
-      <p>Chamo-me David Lopes, sou licenciado em Engenharia de Multimédia, com forte interesse em Front-End Development, UI Design e Web Design.</p>
-        <p>Procuro crescer profissionalmente em projetos criativos e tecnológicos que combinem design, funcionalidade e experiência do utilizador.</p>
-    </div>
-  </section>
-
-<section id="skills" class="skills-section">
-  <h1>Skill Set</h1>
-  <p style="margin-bottom: 30px;"></p>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <img src="creative-cloud.png" alt="Adobe Creative Cloud">
-      <p>Creative Cloud</p>
-    </div>
-    <div class="skill-card">
-      <img src="UIUX.png" alt="UI/UX">
-      <p>UI/UX</p>
-    </div>
-    <div class="skill-card">
-      <img src="webdesign.png" alt="Web Design">
-      <p>Web Design</p>
-    </div>
-    <div class="skill-card">
-      <img src="php.png" alt="PHP">
-      <p>PHP</p>
-    </div>
-    <div class="skill-card">
-      <img src="python.png" alt="Python">
-      <p>Python</p>
-    </div>
-    <div class="skill-card">
-      <img src="sql.png" alt="SQL">
-      <p>SQL</p>
-    </div>
-    <div class="skill-card">
-      <img src="unity.png" alt="Unity">
-      <p>Unity</p>
-    </div>
-        <div class="skill-card">
-      <img src="office.png" alt="Office">
-      <p>Office</p>
-    </div>
-  </div>
-</section>
-<p style="margin-bottom: 75px;"></p>
-
-
-
-<!-- ===== PROJETOS ===== -->
-<section id="projetos" class="projects">
-  <h2>Os meus projetos</h2>
-  <p>(Clica em cada projeto para ampliar)</p>
-  <p style="margin-bottom: 50px;"></p>
-
-  <!-- layout em 2 colunas -->
-  <div class="projects-layout">
-
-    <!-- COLUNA ESQUERDA -->
-    <div class="projects-left">
-
-      <!-- Projeto 1 -->
-      <div class="gallery-item">
-        <div class="video-container">
-          <video class="gallery-video" controls>
-            <source src="Final_Render_1.mp4" type="video/mp4">
-          </video>
-          <button class="play-button" onclick="tocarVideo(this)">▶</button>
-          <div class="overlay">
-            <h3>Onboarding do Projeto Final</h3>
-            <p>Vídeo demonstrativo do meu projeto de conclusão</p>
-            <div class="tags">
-              <span>Multimédia</span>
-              <span>UI/UX</span>
-              <span>Vídeo</span>
-            </div>
-          </div>
+  <main>
+    <section id="home" class="hero section reveal">
+      <div class="hero-content">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Front-End Development / UI Design / Multimédia</p>
+        <h1 data-i18n="hero.title">Olá, sou o David.</h1>
+        <p class="hero-kicker" data-i18n="hero.kicker">Front-end developer e UI designer com background em Engenharia de Multimédia.</p>
+        <p class="hero-text" data-i18n="hero.text">Gosto de transformar ideias em interfaces claras, modernas e fáceis de usar, com atenção ao detalhe visual e à experiência do utilizador.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#projetos" data-i18n="hero.projectsCta">Ver projetos</a>
+          <a class="button secondary" href="#contacto" data-i18n="hero.contactCta">Contactar</a>
         </div>
       </div>
 
-      <!-- Projeto 2 -->
-      <div class="gallery-item">
-        <div class="image-container">
-          <img src="ad_logo.png" alt="Banner TW" />
-          <div class="overlay">
-            <h3>Banner Promocional TW</h3>
-            <p>Design gráfico com tipografia criativa.</p>
+      <div class="hero-visual">
+        <div class="portrait-card">
+          <img src="files/me.png" alt="David Lopes" />
+          <div class="portrait-caption">
+            <span data-i18n="hero.portraitLabel">Disponível para projetos criativos</span>
+            <strong>Web / UI / Multimedia</strong>
+          </div>
+        </div>
+        <div class="hero-panel" aria-label="Resumo profissional" data-i18n-attr="aria-label:hero.panelAria">
+          <div class="panel-row">
+            <span data-i18n="hero.areaLabel">Área</span>
+            <strong>Web & UI</strong>
+          </div>
+          <div class="panel-row">
+            <span>Base</span>
+            <strong>Portugal</strong>
+          </div>
+          <div class="panel-row">
+            <span data-i18n="hero.focusLabel">Foco</span>
+            <strong data-i18n="hero.focusValue">Web design</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills-section section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Stack</p>
+        <h2>Skill Set</h2>
+      </div>
+      <div class="skills-grid">
+        <article class="skill-card">
+          <img src="files/creative-cloud.png" alt="Adobe Creative Cloud" />
+          <span>Creative Cloud</span>
+        </article>
+        <article class="skill-card">
+          <img src="files/UIUX.png" alt="UI/UX" />
+          <span>UI/UX</span>
+        </article>
+        <article class="skill-card">
+          <img src="files/webdesign.png" alt="Web Design" />
+          <span>Web Design</span>
+        </article>
+        <article class="skill-card">
+          <img src="files/php.png" alt="PHP" />
+          <span>PHP</span>
+        </article>
+        <article class="skill-card">
+          <img src="files/python.png" alt="Python" />
+          <span>Python</span>
+        </article>
+        <article class="skill-card">
+          <img src="files/sql.png" alt="SQL" />
+          <span>SQL</span>
+        </article>
+        <article class="skill-card">
+          <img src="files/unity.png" alt="Unity" />
+          <span>Unity</span>
+        </article>
+        <article class="skill-card">
+          <img src="files/office.png" alt="Office" />
+          <span>Office</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="projetos" class="projects section reveal">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="projects.eyebrow">Portefólio</p>
+        <h2 data-i18n="projects.title">Projetos selecionados</h2>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card featured">
+          <div class="project-media video-container">
+            <video class="gallery-video" muted playsinline controls preload="metadata">
+              <source src="files/Final_Render_1.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="project-info">
+            <h3 data-i18n="projects.final.title">Onboarding do Projeto Final</h3>
+            <p data-i18n="projects.final.text">Vídeo demonstrativo para apresentar o fluxo e a experiência do projeto final.</p>
+            <div class="tags">
+              <span data-i18n="tags.multimedia">Multimédia</span>
+              <span>UI/UX</span>
+              <span data-i18n="tags.video">Vídeo</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <button class="image-button" type="button" aria-label="Abrir Banner Promocional TW" data-i18n-attr="aria-label:projects.bannerAria">
+            <img src="files/ad_logo.png" alt="Banner Promocional TW" />
+          </button>
+          <div class="project-info">
+            <h3 data-i18n="projects.banner.title">Banner Promocional TW</h3>
+            <p data-i18n="projects.banner.text">Design gráfico com foco em composição, tipografia e identidade visual.</p>
             <div class="tags">
               <span>Photoshop</span>
               <span>Design</span>
-              <span>Identidade Visual</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Projeto 3 -->
-      <div class="gallery-item">
-        <div class="video-container">
-          <video class="gallery-video" controls>
-            <source src="logo_com_som_final.mp4" type="video/mp4">
-          </video>
-          <button class="play-button" onclick="tocarVideo(this)">▶</button>
-          <div class="overlay">
-            <h3>Logo Animado TW</h3>
-            <p>Animação do logótipo com som.</p>
-            <div class="tags">
-              <span>After Effects</span>
-              <span>Áudio</span>
               <span>Branding</span>
             </div>
           </div>
-        </div>
-      </div>
+        </article>
 
-    </div>
+        <article class="project-card">
+          <div class="project-media video-container">
+            <video class="gallery-video" muted playsinline controls preload="metadata">
+              <source src="files/logo_com_som_final.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="project-info">
+            <h3 data-i18n="projects.logo.title">Logo Animado TW</h3>
+            <p data-i18n="projects.logo.text">Animação de marca para reforçar movimento e personalidade visual.</p>
+            <div class="tags">
+              <span>After Effects</span>
+              <span data-i18n="tags.animation">Animação</span>
+              <span>Branding</span>
+            </div>
+          </div>
+        </article>
 
-    <!-- COLUNA DIREITA -->
-    <div class="projects-right">
-
-      <!-- Projeto 4 -->
-      <div class="gallery-item">
-        <div class="image-container">
-          <img src="cubo_rubik.jpg" alt="Cubo Rubik 3D" />
-          <div class="overlay">
+        <article class="project-card">
+          <button class="image-button" type="button" aria-label="Abrir Cubo Rubik 3D" data-i18n-attr="aria-label:projects.cubeAria">
+            <img src="files/cubo_rubik.jpg" alt="Cubo Rubik 3D" />
+          </button>
+          <div class="project-info">
             <h3>Cubo Rubik 3D</h3>
-            <p>Render 3D com iluminação realista.</p>
+            <p data-i18n="projects.cube.text">Render 3D com materiais, luz e composição visual para apresentação.</p>
             <div class="tags">
               <span>3D</span>
               <span>Render</span>
               <span>Blender</span>
             </div>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <!-- Projeto 5 -->
-      <div class="gallery-item">
-        <div class="video-container">
-          <video class="gallery-video" controls>
-            <source src="ad_mobile_projeto.mp4" type="video/mp4">
-          </video>
-          <button class="play-button" onclick="tocarVideo(this)">▶</button>
-          <div class="overlay">
-            <h3>Projeto Mobile Ad</h3>
-            <p>Vídeo publicitário vertical.</p>
+        <article class="project-card">
+          <div class="project-media video-container">
+            <video class="gallery-video" muted playsinline controls preload="metadata">
+              <source src="files/ad_mobile_projeto.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="project-info">
+            <h3 data-i18n="projects.mobile.title">Projeto Mobile Ad</h3>
+            <p data-i18n="projects.mobile.text">Formato vertical pensado para ritmo, leitura rápida e redes sociais.</p>
             <div class="tags">
-              <span>Vídeo</span>
+              <span data-i18n="tags.video">Vídeo</span>
               <span>Mobile</span>
               <span>Promo</span>
             </div>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <!-- Projeto 6 -->
-      <div class="gallery-item">
-        <div class="image-container">
-          <a href="Brand_Book.pdf" target="_blank">
-            <img src="brandbook.png" alt="Brand Book PDF" />
-            <div class="overlay">
-              <h3>Relatório Técnico</h3>
-              <p>Documentação completa do projeto.</p>
-              <div class="tags">
-                <span>PDF</span>
-                <span>Relatório</span>
-                <span>Documentação</span>
-              </div>
-            </div>
+        <article class="project-card">
+          <a class="image-button" href="files/Brand_Book.pdf" target="_blank" rel="noreferrer" aria-label="Abrir Brand Book PDF" data-i18n-attr="aria-label:projects.brandBookAria">
+            <img src="files/brandbook.png" alt="Brand Book PDF" />
           </a>
-        </div>
+          <div class="project-info">
+            <h3 data-i18n="projects.report.title">Relatório Técnico</h3>
+            <p data-i18n="projects.report.text">Documento completo com estrutura, identidade e decisão visual do projeto.</p>
+            <div class="tags">
+              <span>PDF</span>
+              <span data-i18n="tags.report">Relatório</span>
+              <span data-i18n="tags.documentation">Documentação</span>
+            </div>
+          </div>
+        </article>
       </div>
+    </section>
 
-    </div>
+    <section id="contacto" class="contact section reveal">
+      <div>
+        <h2 data-i18n="contact.title">Vamos falar?</h2>
+      </div>
+      <div class="contact-actions">
+        <a class="button primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=davidjplopes@gmail.com" target="_blank" rel="noreferrer">davidjplopes@gmail.com</a>
+        <a class="button secondary" href="https://www.linkedin.com/in/david-lopes-774a16228/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </section>
+  </main>
 
-  </div>
-</section>
-
-  <p style="margin-bottom: 50px;"></p>
-  <section id="contacto" class="contact">
-    <h2>Contactos</h2>
-    <p><a href="mailto:davidjplopes@gmail.com">davidjplopes@gmail.com</a></p>
-    <p><a href="https://www.linkedin.com/in/david-lopes-774a16228/" target="_blank">LinkedIn</a></p>
-  </section>
-
-  <p style="margin-bottom: 75px;"></p>
-  <footer>
-    <p>&copy; 2025 David Lopes. Todos os direitos reservados.</p>
+  <footer class="site-footer">
+    <p data-i18n="footer.rights">&copy; 2025 David Lopes. Todos os direitos reservados.</p>
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Configuração do Intersection Observer
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-          }
-        });
-      }, observerOptions);
-
-      // Elementos a serem observados
-      const sections = document.querySelectorAll('.projects, .about, .contact, .gallery-item');
-      sections.forEach(function(section) {
-        observer.observe(section);
-      });
-
-      // Efeito do scroll na navbar
-      window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 10) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
-      });
-
-      // Controlo de vídeos na galeria
-      const videos = document.querySelectorAll('.gallery-video');
-      videos.forEach(function(video) {
-        // Pausa vídeos quando outro é reproduzido
-        video.addEventListener('play', function() {
-          videos.forEach(function(otherVideo) {
-            if (otherVideo !== video && !otherVideo.paused) {
-              otherVideo.pause();
-            }
-          });
-        });
-        
-        // Pausa vídeos quando não estão visíveis
-        const videoObserver = new IntersectionObserver(
-          function(entries) {
-            entries.forEach(function(entry) {
-              if (!entry.isIntersecting && !video.paused) {
-                video.pause();
-              }
-            });
-          },
-          { threshold: 0.1 }
-        );
-        videoObserver.observe(video);
-      });
-    });
-  </script>
-  
-  <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const videos = document.querySelectorAll('video');
-
-  videos.forEach(video => {
-    // Sempre inicia videos com volume a 5%
-    video.volume = 0.05;
-
-    video.addEventListener('play', () => {
-      video.volume = 0.05;
-
-      const overlay = video.closest('.gallery-item')?.querySelector('.overlay');
-      if (overlay) {
-        overlay.style.opacity = '0';
-
-        // esconde o fluxo após a transição
-        setTimeout(() => {
-          overlay.style.display = 'none';
-        }, 300);
-      }
-    });
-  });
-});
-</script>
-<script>
-  function tocarVideo(button) {
-    const video = button.previousElementSibling;
-    video.play();
-    button.style.display = "none";
-  }
-</script>
-
-<!-- Botão de som -->
-<button id="sound-toggle" aria-label="Toggle sound" title="Toggle sound">🔇</button>
-
-<!-- Áudio de fundo -->
-<audio id="bg-music" loop preload="auto">
-  <source src="4AM_mishoangelo.mp3" type="audio/mpeg">
-  O teu navegador não suporta áudio.
-</audio>
-
-<script>
-  const toggleBtn = document.getElementById('sound-toggle');
-  const audio = document.getElementById('bg-music');
-
-  toggleBtn.addEventListener('click', async () => {
-    try {
-      if (audio.paused) {
-        await audio.play();
-        toggleBtn.classList.add('playing');
-        toggleBtn.textContent = '🔊';
-        audio.volume = 0.30;
-      } else {
-        audio.pause();
-        toggleBtn.classList.remove('playing');
-        toggleBtn.textContent = '🔇';
-      }
-    } catch (err) {
-      console.log("Erro ao tocar áudio:", err);
-    }
-  });
-</script>
-
-<script src="script.js"></script>
-<link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </body>
 </html>
