@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portefólio de David Lopes, front-end developer, UI designer e engenheiro multimédia." data-i18n-attr="content:meta.description" />
+  <title data-i18n="meta.title">Portefólio | David Lopes</title>
+  <link rel="icon" href="files/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Navegação principal" data-i18n-attr="aria-label:nav.aria">
+      <a href="#home" class="logo">David Lopes</a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" data-i18n-attr="aria-label:nav.menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#home" data-i18n="nav.home">Início</a></li>
+        <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+        <li><a href="#projetos" data-i18n="nav.projects">Projetos</a></li>
+        <li><a href="#contacto" data-i18n="nav.contacts">Contactos</a></li>
+      </ul>
+      <button class="language-toggle" type="button" aria-label="Switch to English" data-lang-toggle>
+        <span data-i18n="language.current">PT</span>
+        <span aria-hidden="true">/</span>
+        <span data-i18n="language.next">EN</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero section reveal">
+      <div class="hero-content">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Front-End Development / UI Design / Multimédia</p>
+        <h1 data-i18n="hero.title">Olá, sou o David.</h1>
+        <p class="hero-kicker" data-i18n="hero.kicker">Front-end developer e UI designer com background em Engenharia de Multimédia.</p>
+        <p class="hero-text" data-i18n="hero.text">Gosto de transformar ideias em interfaces claras, modernas e fáceis de usar, com atenção al detalhe visual e à experiência do utilizador.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#projetos" data-i18n="hero.projectsCta">Ver projetos</a>
+          <a class="button secondary" href="#contacto" data-i18n="hero.contactCta">Contacta-me</a>
+          <a class="button secondary" href="files/David_Lopes_CV.pdf" download data-i18n="hero.cvCta">Transferir CV</a>
+          <a class="button secondary" href="files/David_Lopes_Portfolio.pdf" download data-i18n="hero.portfolioCta">Transferir Portfólio (PDF)</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="portrait-card">
+          <img src="files/me.png" alt="David Lopes" />
+          <div class="portrait-caption">
+            <span data-i18n="hero.portraitLabel">Disponível para projetos criativos</span>
+            <strong>Web / UI / Multimedia</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about section reveal">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="about.eyebrow">Sobre mim</p>
+        <h2 data-i18n="about.title">Perfil criativo e técnico</h2>
+      </div>
+      <div class="about-content">
+        <p data-i18n="about.text">Sou o David Lopes, front-end developer e UI designer com formação em Engenharia de Multimédia. Gosto de criar experiências digitais claras, modernas e funcionais, juntando design visual, interação, desenvolvimento web e multimédia. Procuro projetos onde possa transformar ideias em interfaces bem estruturadas, acessíveis e fáceis de usar.</p>
+      </div>
+    </section>
+
+    <section id="skills" class="skills-section section reveal">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="skills.eyebrow">Stack</p>
+        <h2 data-i18n="skills.title">Skill Set</h2>
+        <p class="section-intro" data-i18n="skills.intro">Ferramentas e áreas que uso para desenhar interfaces, desenvolver experiências web e criar conteúdos multimédia.</p>
+      </div>
+      <div class="skill-categories" aria-label="Categorias de competências" data-i18n-attr="aria-label:skills.categoriesAria">
+        <button class="category-btn active" data-filter="all" data-i18n="skills.filter.all">Todas</button>
+        <button class="category-btn" data-filter="design" data-i18n="skills.design">Design</button>
+        <button class="category-btn" data-filter="development" data-i18n="skills.development">Development</button>
+        <button class="category-btn" data-filter="multimedia" data-i18n="skills.multimedia">Multimedia</button>
+      </div>
+      <div class="skills-grid">
+        <article class="skill-card" tabindex="0" data-category="development">
+          <img src="https://skillicons.dev/icons?i=html" alt="HTML" />
+          <span>HTML</span>
+          <p class="skill-summary" data-i18n="skills.summary.html">Estrutura o conteúdo e a base semântica das páginas web.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="development">
+          <img src="https://skillicons.dev/icons?i=css" alt="CSS" />
+          <span>CSS</span>
+          <p class="skill-summary" data-i18n="skills.summary.css">Define estilos, layouts responsivos, animações e identidade visual.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="development">
+          <img src="https://skillicons.dev/icons?i=js" alt="JavaScript" />
+          <span>JavaScript</span>
+          <p class="skill-summary" data-i18n="skills.summary.javascript">Adiciona interação, lógica e comportamento dinâmico às interfaces.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="development">
+          <img src="https://skillicons.dev/icons?i=ts" alt="TypeScript" />
+          <span>TypeScript</span>
+          <p class="skill-summary" data-i18n="skills.summary.typescript">Superset de JavaScript que adiciona tipagem estática e segurança ao código.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="development">
+          <img src="https://skillicons.dev/icons?i=angular" alt="Angular" />
+          <span>Angular</span>
+          <p class="skill-summary" data-i18n="skills.summary.angular">Framework para aplicações web estruturadas, escaláveis e reativas.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="development">
+          <img src="https://skillicons.dev/icons?i=react" alt="React" />
+          <span>React</span>
+          <p class="skill-summary" data-i18n="skills.summary.react">Biblioteca para construir interfaces por componentes reutilizáveis.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="development">
+          <img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js" />
+          <span>Node.js</span>
+          <p class="skill-summary" data-i18n="skills.summary.nodejs">Ambiente JavaScript para criar servidores, APIs e ferramentas web.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="development">
+          <img src="https://skillicons.dev/icons?i=java" alt="Java" />
+          <span>Java</span>
+          <p class="skill-summary" data-i18n="skills.summary.java">Linguagem orientada a objetos para lógica, apps e bases sólidas de programação.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="development">
+          <img src="https://skillicons.dev/icons?i=php" alt="PHP" />
+          <span>PHP</span>
+          <p class="skill-summary" data-i18n="skills.summary.php">Linguagem server-side usada para sites dinâmicos e integração com bases de dados.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="development">
+          <img class="framed-skill-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" />
+          <span>SQL</span>
+          <p class="skill-summary" data-i18n="skills.summary.sql">Consulta, organiza e relaciona dados em bases de dados relacionais.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="development">
+          <img src="https://skillicons.dev/icons?i=git" alt="Git" />
+          <span>Git</span>
+          <p class="skill-summary" data-i18n="skills.summary.git">Sistema de controlo de versões para gerir e rastrear o histórico do código.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="design">
+          <img src="https://skillicons.dev/icons?i=figma" alt="Figma" />
+          <span>Figma</span>
+          <p class="skill-summary" data-i18n="skills.summary.figma">Ferramenta de design e prototipagem colaborativa para interfaces digitais.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="design">
+          <img src="https://skillicons.dev/icons?i=ai" alt="Adobe Illustrator" />
+          <span>Adobe Illustrator</span>
+          <p class="skill-summary" data-i18n="skills.summary.illustrator">Cria ilustrações vetoriais, logótipos, ícones e peças gráficas escaláveis.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="design multimedia">
+          <img src="https://skillicons.dev/icons?i=ps" alt="Adobe Photoshop" />
+          <span>Adobe Photoshop</span>
+          <p class="skill-summary" data-i18n="skills.summary.photoshop">Edita imagens, composições visuais, mockups e tratamento gráfico.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="multimedia">
+          <img src="https://skillicons.dev/icons?i=pr" alt="Premiere Pro" />
+          <span>Premiere Pro</span>
+          <p class="skill-summary" data-i18n="skills.summary.premiere">Edita vídeo, ritmo, cortes, áudio e conteúdos para formatos digitais.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="multimedia">
+          <img src="https://skillicons.dev/icons?i=ae" alt="After Effects" />
+          <span>After Effects</span>
+          <p class="skill-summary" data-i18n="skills.summary.afterEffects">Produz motion graphics, animações, títulos e efeitos visuais.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="multimedia design">
+          <img src="https://skillicons.dev/icons?i=blender" alt="Blender" />
+          <span>Blender</span>
+          <p class="skill-summary" data-i18n="skills.summary.blender">Modela, ilumina, anima e renderiza projetos 3D.</p>
+        </article>
+        <article class="skill-card" tabindex="0" data-category="multimedia">
+          <img src="https://skillicons.dev/icons?i=unity" alt="Unity" />
+          <span>Unity</span>
+          <p class="skill-summary" data-i18n="skills.summary.unity">Cria experiências interativas, jogos e protótipos em tempo real.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projetos" class="projects section reveal">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="projects.eyebrow">Portefólio</p>
+        <h2 data-i18n="projects.title">Projetos selecionados</h2>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-media video-container">
+            <video class="gallery-video" muted playsinline controls preload="metadata">
+              <source src="files/Final_Render_1.mp4" type="video/mp4" />
+            </video>
+            <button class="video-play" type="button" aria-label="Reproduzir vídeo" data-i18n-attr="aria-label:projects.playVideoAria"></button>
+          </div>
+          <div class="project-info">
+            <h3 data-i18n="projects.final.title">Onboarding do Projeto Final</h3>
+            <p data-i18n="projects.final.text">Vídeo demonstrativo para apresentar o fluxo e a experiência do projeto final.</p>
+            <div class="tags">
+              <span data-i18n="tags.multimedia">Multimédia</span>
+              <span>UI/UX</span>
+              <span data-i18n="tags.video">Vídeo</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <button class="image-button" type="button" aria-label="Abrir Banner Promocional TW" data-i18n-attr="aria-label:projects.bannerAria">
+            <img src="files/ad_logo.png" alt="Banner Promocional TW" />
+          </button>
+          <div class="project-info">
+            <h3 data-i18n="projects.banner.title">Banner Promocional TW</h3>
+            <p data-i18n="projects.banner.text">Design gráfico com foco em composição, tipografia e identidade visual.</p>
+            <div class="tags">
+              <span>Photoshop</span>
+              <span>Design</span>
+              <span>Branding</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media video-container">
+            <video class="gallery-video" muted playsinline controls preload="metadata" poster="files/logo_animado_thumb.jpg">
+              <source src="files/logo_com_som_final.mp4" type="video/mp4" />
+            </video>
+            <button class="video-play" type="button" aria-label="Reproduzir vídeo" data-i18n-attr="aria-label:projects.playVideoAria"></button>
+          </div>
+          <div class="project-info">
+            <h3 data-i18n="projects.logo.title">Logo Animado TW</h3>
+            <p data-i18n="projects.logo.text">Animação de marca para reforçar movimento e personalidade visual.</p>
+            <div class="tags">
+              <span>After Effects</span>
+              <span data-i18n="tags.animation">Animação</span>
+              <span>Branding</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media video-container">
+            <video class="gallery-video" muted playsinline controls preload="metadata" poster="files/kinetic_typo.png">
+              <source src="files/Tipografia_Cinetica.mp4" type="video/mp4" />
+            </video>
+            <button class="video-play" type="button" aria-label="Reproduzir vídeo" data-i18n-attr="aria-label:projects.playVideoAria"></button>
+          </div>
+          <div class="project-info">
+            <h3 data-i18n="projects.kinetic.title">Tipografia Cinética</h3>
+            <p data-i18n="projects.kinetic.text">Peça motion focada em ritmo, hierarquia tipográfica e sincronização visual.</p>
+            <div class="tags">
+              <span>After Effects</span>
+              <span data-i18n="tags.animation">Animação</span>
+              <span>Typography</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media video-container">
+            <video class="gallery-video" muted playsinline controls preload="metadata" poster="files/lower_third.png">
+              <source src="files/Lower_third.mp4" type="video/mp4" />
+            </video>
+            <button class="video-play" type="button" aria-label="Reproduzir vídeo" data-i18n-attr="aria-label:projects.playVideoAria"></button>
+          </div>
+          <div class="project-info">
+            <h3 data-i18n="projects.lowerThird.title">Lower Third</h3>
+            <p data-i18n="projects.lowerThird.text">Grafismo animado para identificação em vídeo, com entrada limpa e leitura rápida.</p>
+            <div class="tags">
+              <span>After Effects</span>
+              <span>Motion</span>
+              <span data-i18n="tags.video">Vídeo</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <a class="image-button" href="https://nashi34.github.io/javadex/" target="_blank" rel="noreferrer" aria-label="Abrir Javadex" data-i18n-attr="aria-label:projects.javadexAria">
+            <img src="files/javadex.png" alt="Javadex" />
+          </a>
+          <div class="project-info">
+            <h3 data-i18n="projects.javadex.title">Javadex</h3>
+            <p data-i18n="projects.javadex.text">Website temático desenvolvido para explorar interface, navegação e apresentação visual.</p>
+            <div class="tags">
+              <span>Web</span>
+              <span>UI Design</span>
+              <span>JavaScript</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <a class="image-button" href="https://nashi34.github.io/V.GRAPHIKS/" target="_blank" rel="noreferrer" aria-label="Abrir Vgraphiks" data-i18n-attr="aria-label:projects.vgraphiksAria">
+            <img src="files/vgraphiks.png" alt="Vgraphiks" />
+          </a>
+          <div class="project-info">
+            <h3 data-i18n="projects.vgraphiks.title">Vgraphiks</h3>
+            <p data-i18n="projects.vgraphiks.text">Website de identidade visual com foco em composição, portefólio e presença digital.</p>
+            <div class="tags">
+              <span>Web Design</span>
+              <span>Branding</span>
+              <span>UI/UX</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <button class="image-button" type="button" aria-label="Abrir Cubo Rubik 3D" data-i18n-attr="aria-label:projects.cubeAria">
+            <img src="files/cubo_rubik.jpg" alt="Cubo Rubik 3D" />
+          </button>
+          <div class="project-info">
+            <h3>Cubo Rubik 3D</h3>
+            <p data-i18n="projects.cube.text">Render 3D com materiais, luz e composição visual para apresentação.</p>
+            <div class="tags">
+              <span>3D</span>
+              <span>Render</span>
+              <span>Blender</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media video-container">
+            <video class="gallery-video" muted playsinline controls preload="metadata" poster="files/mobile_ad_thumb.jpg">
+              <source src="files/ad_mobile_projeto.mp4" type="video/mp4" />
+            </video>
+            <button class="video-play" type="button" aria-label="Reproduzir vídeo" data-i18n-attr="aria-label:projects.playVideoAria"></button>
+          </div>
+          <div class="project-info">
+            <h3 data-i18n="projects.mobile.title">Projeto Mobile Ad</h3>
+            <p data-i18n="projects.mobile.text">Formato vertical pensado para ritmo, leitura rápida e redes sociais.</p>
+            <div class="tags">
+              <span data-i18n="tags.video">Vídeo</span>
+              <span>Mobile</span>
+              <span>Promo</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <a class="image-button" href="files/Brand_Book.pdf" target="_blank" rel="noreferrer" aria-label="Abrir Brand Book PDF" data-i18n-attr="aria-label:projects.brandBookAria">
+            <img src="files/brandbook.png" alt="Brand Book PDF" />
+          </a>
+          <div class="project-info">
+            <h3 data-i18n="projects.report.title">Relatório Técnico</h3>
+            <p data-i18n="projects.report.text">Documento completo com estrutura, identidade e decisão visual do projeto.</p>
+            <div class="tags">
+              <span>PDF</span>
+              <span data-i18n="tags.report">Relatório</span>
+              <span data-i18n="tags.documentation">Documentação</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contacto" class="contact section reveal">
+      <div>
+        <p class="eyebrow" data-i18n="contact.eyebrow">Pronto a criar</p>
+        <h2 data-i18n="contact.title">Vamos falar?</h2>
+      </div>
+      <div class="contact-actions">
+        <a class="button primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=davidjplopes@gmail.com" target="_blank" rel="noreferrer">davidjplopes@gmail.com</a>
+        <a class="button secondary" href="https://www.linkedin.com/in/david-lopes-774a16228/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p data-i18n="footer.rights">&copy; 2025 David Lopes. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

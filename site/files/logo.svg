@@ -1,0 +1,46 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#111820"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00e5cc"/>
+      <stop offset="100%" stop-color="#00b4d8"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="512" height="512" rx="110" fill="url(#bg)"/>
+
+  <!-- Subtle grid lines -->
+  <g opacity="0.04" stroke="#00e5cc" stroke-width="1">
+    <line x1="0" y1="128" x2="512" y2="128"/>
+    <line x1="0" y1="256" x2="512" y2="256"/>
+    <line x1="0" y1="384" x2="512" y2="384"/>
+    <line x1="128" y1="0" x2="128" y2="512"/>
+    <line x1="256" y1="0" x2="256" y2="512"/>
+    <line x1="384" y1="0" x2="384" y2="512"/>
+  </g>
+
+  <!-- D letter — clean geometric -->
+  <!-- Vertical stroke -->
+  <rect x="130" y="130" width="52" height="252" rx="8" fill="url(#accentGrad)" filter="url(#glow)"/>
+
+  <!-- D curve — outer arc -->
+  <path d="M 158 130 Q 360 130 360 256 Q 360 382 158 382" 
+        fill="none" stroke="url(#accentGrad)" stroke-width="52" stroke-linecap="round" filter="url(#glow)"/>
+
+  <!-- Inner cutout -->
+  <path d="M 175 175 Q 308 175 308 256 Q 308 337 175 337" 
+        fill="url(#bg)" stroke="none"/>
+
+  <!-- Cyan dot accent bottom right -->
+  <circle cx="370" cy="370" r="18" fill="#00e5cc" opacity="0.15"/>
+  <circle cx="370" cy="370" r="8" fill="#00e5cc" opacity="0.6"/>
+
+</svg>
