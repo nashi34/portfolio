@@ -1,31 +1,36 @@
 # Portfolio | David Lopes
 
-O meu portfolio pessoal, criado para apresentar o meu perfil, competências e projetos na área de Front-End Development, UI Design e Multimédia.
+O meu portfolio pessoal foi criado para apresentar o meu trabalho como front-end developer, UI designer e profissional de multimédia.
 
 ## Visão Geral
 
-Este portfolio é um site simples e responsivo que permite:
-- Apresentar uma breve introdução sobre mim
-- Mostrar as minhas principais skills
-- Apresentar projetos selecionados
-- Disponibilizar o meu CV para download
-- Facilitar o contacto por email e LinkedIn
-- Alternar entre português e inglês
+Este portfolio é um site estático e responsivo que inclui:
+- Introdução pessoal
+- Secção de sobre mim
+- Skills e categorias de competências
+- Projetos selecionados
+- Modo Português / Inglês
+- Download de CV e portfólio em PDF
+- Contacto rápido por email e LinkedIn
 
 ## Tecnologias
 
-- **HTML5**: estrutura do site
-- **CSS3**: estilos, layout responsivo e animações
-- **JavaScript**: interatividade, menu mobile, troca de idioma, modal de imagens e controlo de vídeos
+- **HTML5**: estrutura semântica da página
+- **CSS3**: layout responsivo, animações e estilos visuais
+- **JavaScript**: alternador de idioma, menu mobile, navegação activa, modais de imagem e controlo de vídeos
 
 ## Estrutura do Projeto
 
 ```bash
-site/
+portfolio/
 ├── files/
 │   ├── imagens
 │   ├── videos
-│   └── documentos
+│   ├── documentos
+│   └── assets do site
+├── portfolioPDF/
+│   ├── portfolio_pdf.html
+│   └── video.html
 ├── index.html
 ├── style.css
 ├── script.js
@@ -34,58 +39,48 @@ site/
 
 ## Como Abrir
 
-Como o projeto é um site estático, não é necessário instalar dependências.
+Não é preciso instalar dependências. O site funciona como uma página estática.
 
 Para visualizar:
-
-1. Abrir diretamente através do link `nashi34.github.io/portfolio/`
-2. Ou abrir a pasta do projeto
-3. Abrir o ficheiro `index.html` no navegador
-
-Também pode ser usado o Live Server do Visual Studio Code para uma experiência mais prática.
+1. Abrir `index.html` no navegador
+2. Ou servir a pasta com o Live Server do Visual Studio Code
 
 ## Funcionalidades
 
-### Página Inicial
-- Apresentação pessoal
-- Botões para ver projetos, contactar e transferir CV
-- Imagem de perfil e resumo profissional
-
-### Sobre Mim
-- Pequena descrição do meu perfil criativo e técnico
-- Foco em desenvolvimento web, design de interfaces e multimédia
+### Interface e navegação
+- Menu responsivo para ecrãs mobile
+- Secções com animações de revelação
+- Navegação activa baseada no scroll
+- Alternância de idioma entre português e inglês
 
 ### Skills
-- Creative Cloud
-- UI/UX
-- Web Design
-- Blender
-- Unity
-- Java
-- PHP
-- SQL
-- Swift
-- Office
+- Lista de competências com filtros por categoria
+- Inclui Development, Design e Multimedia
+- Exibição de tecnologias como HTML, CSS, JavaScript, TypeScript, Angular, React, Node.js, Java, PHP, SQL, Git, Figma, Adobe Illustrator, Photoshop, Premiere Pro, After Effects, Blender e Unity
 
-### Projetos
-- Vídeo de onboarding do projeto final
-- Banner promocional TW
-- Logo animado TW
-- Cubo Rubik 3D
-- Projeto mobile ad
-- Brand Book / relatório técnico
+### Projetos destacados
+- **Javadex**: website temático em JavaScript
+- **v.graphiks**: website de identidade visual e branding
+- **Noir Detail**: website institucional para serviços de detailing premium
+- **Onboarding do Projeto Final**: vídeo demonstrativo
+- **Banner Promocional TW**: design gráfico e composição
+- **Logo Animado TW**: animação de marca
+- **Tipografia Cinética**: motion graphic tipográfico
+- **Lower Third**: grafismo animado para vídeo
+- **Relatório Técnico**: documentação e Brand Book
 
-### Contactos
-- Email
-- LinkedIn
+### Conteúdos adicionais
+- Portfólio em PDF disponível para download
+- Vídeo incorporado com controlo de reprodução
+- Imagens e mockups com modal de visualização
 
-## Estado do Projeto
+## Alterações recentes
+- Atualizado o projeto **Noir Detail** para suportar tradução em inglês
+- Corrigido o título do projeto **v.graphiks** em toda a apresentação
+- Melhorias de tradução e acessibilidade no site
 
-Este projeto foi desenvolvido como portfolio pessoal e pode continuar a ser atualizado com novos projetos, melhorias visuais e novas funcionalidades.
-
-## Links
-
-- [LinkedIn](https://www.linkedin.com/in/david-lopes-774a16228/)
+## Contactos
+- LinkedIn: https://www.linkedin.com/in/david-lopes-774a16228/
 - Email: `davidjplopes@gmail.com`
 
 ---

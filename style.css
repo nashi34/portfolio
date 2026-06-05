@@ -1027,7 +1027,11 @@ a.image-button {
     width: 100%;
   }
 
-  .skills-grid,
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
   .projects-grid,
   .contact {
     grid-template-columns: 1fr;
@@ -1038,7 +1042,11 @@ a.image-button {
   }
 
   .skill-card {
-    min-height: 150px;
+    min-height: 140px;
+  }
+
+  .skill-card span {
+    font-size: 0.9rem;
   }
 
   .skill-summary {
