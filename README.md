@@ -74,6 +74,11 @@ Para visualizar:
 - Vídeo incorporado com controlo de reprodução
 - Imagens e mockups com modal de visualização
 
+## Alterações recentes
+- Atualizado o projeto **Noir Detail** para suportar tradução em inglês
+- Corrigido o título do projeto **v.graphiks** em toda a apresentação
+- Melhorias de tradução e acessibilidade no site
+
 ## Contactos
 - LinkedIn: https://www.linkedin.com/in/david-lopes-774a16228/
 - Email: `davidjplopes@gmail.com`
